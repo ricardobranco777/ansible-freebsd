@@ -1,0 +1,26 @@
+---
+- name: Configure FreeBSD
+  hosts: all
+
+  tasks:
+    - name: Install required packages
+      pkgng:
+        name:
+          - bash
+          - curl
+          - diffutils
+          - git
+          - go121
+          - mc
+          - python311
+          - sudo
+          - vim
+          - zip
+        state: latest
+
+    - name: Mount /proc if not mounted
+      mount:
+        path: /proc
+        src: proc
+        fstype: procfs
+        state: mounted
