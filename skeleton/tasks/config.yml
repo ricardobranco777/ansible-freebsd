@@ -14,5 +14,14 @@
   loop:
     - line: clear_tmp_enable="YES"
     - line: syslogd_flags="-ss"
+    - line: rpcbind_flags="-W"
     - line: nfs_client_enable="YES"
     - line: rpc_lockd_enable="YES"
+
+- name: Set /etc/hosts.allow
+  copy:
+    src: hosts.allow
+    dest: /etc/hosts.allow
+    owner: root
+    group: wheel
+    mode: 0600
