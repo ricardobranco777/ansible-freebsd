@@ -15,6 +15,17 @@
     - line: clear_tmp_enable="YES"
     - line: syslogd_flags="-ss"
     - line: rpcbind_flags="-W"
+    - line: pf_enable="yes"
+    - line: pf_rules="/etc/pf.conf"
+    - line: pflog_enable="yes"
+
+- name: Configure Packet Filter
+  copy:
+    src: pf.conf
+    dest: /etc/pf.conf
+    owner: root
+    group: wheel
+    mode: 0600
 
 - name: Set /etc/hosts.allow
   copy:
