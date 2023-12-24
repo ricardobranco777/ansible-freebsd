@@ -1,0 +1,11 @@
+---
+- name: Enable linux binary compatibility
+  lineinfile:
+    path: /etc/rc.conf
+    line: "linux_enable=\"YES\""
+  tags: ['linux']
+
+- name: Start linux service
+  shell: service linux start
+  args:
+    creates: /compat/linux
