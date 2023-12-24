@@ -1,0 +1,7 @@
+---
+- name: Mount /proc if not mounted
+  mount:
+    path: /proc
+    src: proc
+    fstype: procfs
+    state: mounted

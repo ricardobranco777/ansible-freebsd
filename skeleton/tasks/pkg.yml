@@ -1,0 +1,14 @@
+---
+- name: Install required packages
+  pkgng:
+    name:
+      - bash
+      - curl
+      - diffutils
+      - git
+      - go121
+      - mc
+      - sudo
+      - vim
+      - zip
+    state: present

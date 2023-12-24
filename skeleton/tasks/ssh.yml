@@ -1,0 +1,22 @@
+---
+- name: Create drop-in directory for openSSH
+  file:
+    path: /etc/ssh/sshd_config.d
+    state: directory
+    owner: root
+    group: wheel
+    mode: '0700'
+
+- name: Add Include directive to sshd_config
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: "Include /etc/ssh/sshd_config.d/*.conf"
+
+- name: Add custom openSSH configuration
+  copy:
+    src: ssh/custom.conf
+    dest: /etc/ssh/sshd_config.d/custom.conf
+    owner: root
+    group: wheel
+    mode: 0600
+  tags: ['ssh']
