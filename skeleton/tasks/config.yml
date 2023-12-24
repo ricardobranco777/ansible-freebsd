@@ -6,3 +6,11 @@
     fstype: procfs
     state: mounted
   tags: ['mount']
+
+- name: Configure services
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: clear_tmp_enable="YES"
+    - line: syslogd_flags="-ss"
