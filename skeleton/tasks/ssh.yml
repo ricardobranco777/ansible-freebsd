@@ -6,11 +6,13 @@
     owner: root
     group: wheel
     mode: '0700'
+  tags: ['ssh']
 
 - name: Add Include directive to sshd_config
   lineinfile:
     path: /etc/ssh/sshd_config
     line: "Include /etc/ssh/sshd_config.d/*.conf"
+  tags: ['ssh']
 
 - name: Add custom openSSH configuration
   copy:

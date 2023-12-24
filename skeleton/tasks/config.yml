@@ -5,3 +5,4 @@
     src: proc
     fstype: procfs
     state: mounted
+  tags: ['mount']

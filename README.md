@@ -17,3 +17,6 @@ Check:
 
 Run with:
 `ansible-playbook -v -i inventory main.yml`
+
+TODO
+  - After running this playbook the first time run: `pkg update -f && pkg upgrade && pkg audit -F`

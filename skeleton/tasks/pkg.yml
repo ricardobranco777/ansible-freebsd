@@ -12,3 +12,22 @@
       - vim
       - zip
     state: present
+  tags: ['pkg']
+
+- name: Create /usr/local/etc/pkg/repos/
+  file:
+    path: /usr/local/etc/pkg/repos/
+    state: directory
+    owner: root
+    group: wheel
+    mode: '0700'
+  tags: ['pkg']
+
+- name: Configure pkg
+  copy:
+    src: pkg/FreeBSD.conf
+    dest: /usr/local/etc/pkg/repos/FreeBSD.conf
+    owner: root
+    group: wheel
+    mode: 0600
+  tags: ['pkg']
