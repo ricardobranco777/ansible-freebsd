@@ -19,9 +19,11 @@
       - ltrace
       - mc
       - nmap
+      - psmisc
       - rsync
       - screen
       - sudo
+      - util-linux
       - vim
       - wget
       - zip
