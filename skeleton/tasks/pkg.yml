@@ -31,3 +31,14 @@
     group: wheel
     mode: 0600
   tags: ['pkg']
+
+- name: Add ports collection
+  git:
+    repo: https://git.FreeBSD.org/ports.git
+    dest: /usr/ports
+
+- name: Add src collection
+  git:
+    repo: https://git.FreeBSD.org/src.git
+    dest: /usr/src
+    version: releng/14.0

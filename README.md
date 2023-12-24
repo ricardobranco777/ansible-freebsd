@@ -19,4 +19,4 @@ Run with:
 `ansible-playbook -v -i inventory main.yml`
 
 TODO
-  - After running this playbook the first time run: `pkg update -f && pkg upgrade && pkg audit -F`
+  - After running this playbook the first time run: `pkg update -f && pkg upgrade -y && pkg clean -a -y && pkg audit -F `
