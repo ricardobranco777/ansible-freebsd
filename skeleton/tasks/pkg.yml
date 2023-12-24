@@ -5,11 +5,25 @@
       - bash
       - curl
       - diffutils
+      - doas
+      - gawk
       - git
+      - gmake
+      - gnugrep
+      - gnupg
       - go121
+      - gsed
+      - gtar
+      - jq
+      - lsof
+      - ltrace
       - mc
+      - nmap
+      - rsync
+      - screen
       - sudo
       - vim
+      - wget
       - zip
     state: present
   tags: ['pkg']
