@@ -6,14 +6,23 @@
     regexp: "{{ item.regexp }}"
   loop:
     - line: security.bsd.see_other_uids=0
-      regexp: ^security\.bsd\.see_other_uids
+      regexp: ^security\.bsd\.see_other_uids=
     - line: security.bsd.see_other_gids=0
-      regexp: ^security\.bsd\.see_other_gids
+      regexp: ^security\.bsd\.see_other_gids=
     - line: security.bsd.see_jail_proc=0
-      regexp: ^security\.bsd\.see_jail_proc
+      regexp: ^security\.bsd\.see_jail_proc=
     - line: security.bsd.unprivileged_read_msgbuf=0
-      regexp: ^security\.bsd\.unprivileged_read_msgbuf
+      regexp: ^security\.bsd\.unprivileged_read_msgbuf=
     - line: security.bsd.unprivileged_proc_debug=0
-      regexp: ^security\.bsd\.unprivileged_proc_debug
+      regexp: ^security\.bsd\.unprivileged_proc_debug=
     - line: kern.randompid=1
       regexp: ^kern\.randompid
+
+- name: Security sysctl's in loader.conf
+  lineinfile:
+    path: /boot/loader.conf
+    line: "{{ item.line }}"
+    regexp: "{{ item.regexp }}"
+  loop:
+    - line: security.bsd.allow_destructive_dtrace=0
+      regexp: ^security\.bsd\.allow_destructive_dtrace=
