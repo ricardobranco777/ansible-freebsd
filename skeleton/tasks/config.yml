@@ -14,3 +14,5 @@
   loop:
     - line: clear_tmp_enable="YES"
     - line: syslogd_flags="-ss"
+    - line: nfs_client_enable="YES"
+    - line: rpc_lockd_enable="YES"
