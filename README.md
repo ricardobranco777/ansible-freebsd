@@ -20,3 +20,4 @@ Run with:
 
 TODO
   - After running this playbook the first time run: `pkg update -f && pkg upgrade -y && pkg clean -a -y && pkg audit -F `
+  - Upgrade with `freebsd-update fetch && freebsd-update install`

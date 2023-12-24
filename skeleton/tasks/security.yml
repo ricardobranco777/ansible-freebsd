@@ -17,6 +17,7 @@
       regexp: ^security\.bsd\.unprivileged_proc_debug=
     - line: kern.randompid=1
       regexp: ^kern\.randompid
+  tags: ['security']
 
 - name: Security sysctl's in loader.conf
   lineinfile:
@@ -26,3 +27,19 @@
   loop:
     - line: security.bsd.allow_destructive_dtrace=0
       regexp: ^security\.bsd\.allow_destructive_dtrace=
+  tags: ['security']
+
+- name: Configure pkg
+  copy:
+    src: doas.conf
+    dest: /usr/local/etc/doas.conf
+    owner: root
+    group: wheel
+    mode: 0600
+  tags: ['security']
+
+- name: adding user ricardo to wheel group
+  user:
+    name: ricardo
+    groups: wheel
+    append: yes
