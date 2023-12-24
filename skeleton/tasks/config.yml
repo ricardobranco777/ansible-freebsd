@@ -15,8 +15,6 @@
     - line: clear_tmp_enable="YES"
     - line: syslogd_flags="-ss"
     - line: rpcbind_flags="-W"
-    - line: nfs_client_enable="YES"
-    - line: rpc_lockd_enable="YES"
 
 - name: Set /etc/hosts.allow
   copy:
