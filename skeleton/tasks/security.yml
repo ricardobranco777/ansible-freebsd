@@ -1,23 +1,29 @@
 ---
-- name: Security sysctls
+- name: Security sysctl's
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  loop:
+    - name: security.bsd.see_other_uids
+      value: 0
+    - name: security.bsd.see_other_gids
+      value: 0
+    - name: security.bsd.see_jail_proc
+      value: 0
+    - name: security.bsd.unprivileged_read_msgbuf
+      value: 0
+    - name: security.bsd.unprivileged_proc_debug
+      value: 0
+  tags: ['security']
+
+# This one should be specified with lineinfile because
+# it returns a random value when reading the sysctl
+- name: More security sysctls
   lineinfile:
     path: /etc/sysctl.conf
-    line: "{{ item.line }}"
-    regexp: "{{ item.regexp }}"
-  loop:
-    - line: security.bsd.see_other_uids=0
-      regexp: ^security\.bsd\.see_other_uids=
-    - line: security.bsd.see_other_gids=0
-      regexp: ^security\.bsd\.see_other_gids=
-    - line: security.bsd.see_jail_proc=0
-      regexp: ^security\.bsd\.see_jail_proc=
-    - line: security.bsd.unprivileged_read_msgbuf=0
-      regexp: ^security\.bsd\.unprivileged_read_msgbuf=
-    - line: security.bsd.unprivileged_proc_debug=0
-      regexp: ^security\.bsd\.unprivileged_proc_debug=
-    - line: kern.randompid=1
-      regexp: ^kern\.randompid
-  tags: ['security']
+    line: kern.randompid=1
+    regexp: ^kern\.randompid
 
 - name: Security sysctl's in loader.conf
   lineinfile:
@@ -29,7 +35,7 @@
       regexp: ^security\.bsd\.allow_destructive_dtrace=
   tags: ['security']
 
-- name: Configure pkg
+- name: Configure doas
   copy:
     src: doas.conf
     dest: /usr/local/etc/doas.conf
@@ -43,3 +49,13 @@
     name: ricardo
     groups: wheel
     append: yes
+  tags: ['security']
+
+- name: Allow user to run sudo
+  copy:
+    src: sudoers.d/custom
+    dest: /usr/local/etc/sudoers.d/custom
+    owner: root
+    group: wheel
+    mode: 0600
+  tags: ['security']
