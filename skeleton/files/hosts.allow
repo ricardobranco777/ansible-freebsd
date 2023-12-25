@@ -5,6 +5,7 @@
 # IP spoofing or more complicated attacks. Hosts with no reverse DNS
 # pass this rule.
 ALL : PARANOID : RFC931 20 : deny
+sshd : ALL : allow
 
 # Allow anything from localhost.  Note that an IP address (not a host
 # name) *MUST* be specified for rpcbind(8).
