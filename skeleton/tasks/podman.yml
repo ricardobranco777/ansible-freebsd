@@ -1,0 +1,40 @@
+---
+- name: Install podman suite 
+  pkgng:
+    name:
+      - podman-suite
+    state: present
+  tags: ['pkg', 'podman']
+
+- name: Mount /dev/fd
+  mount:
+    path: /dev/fd
+    src: fdesc
+    fstype: fdescfs
+    state: mounted
+  tags: ['podman']
+
+- name: Configure VFS driver
+  lineinfile:
+    path: /usr/local/etc/containers/storage.conf
+    line: "{{ item.line }}"
+    regexp: "{{ item.regexp }}"
+  loop:
+    - line: driver = "vfs"
+      regexp: ^driver =
+  tags: ['podman']
+
+- name: Load PF at boot
+  lineinfile:
+    path: /boot/loader.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: pf_load="YES"
+  tags: ['podman', 'pf']
+
+- name: Load sysctl's for podman
+  sysctl:
+    name: net.pf.filter_local
+    value: '1'
+    state: present
+  tags: ['podman']

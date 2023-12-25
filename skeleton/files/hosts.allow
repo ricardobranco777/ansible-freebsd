@@ -1,3 +1,6 @@
+# Allow sshd to all
+sshd : ALL : allow
+
 # Protect against simple DNS spoofing attacks by checking that the
 # forward and reverse records for the remote host match. If a mismatch
 # occurs, access is denied, and any positive ident response within
@@ -5,7 +8,6 @@
 # IP spoofing or more complicated attacks. Hosts with no reverse DNS
 # pass this rule.
 ALL : PARANOID : RFC931 20 : deny
-sshd : ALL : allow
 
 # Allow anything from localhost.  Note that an IP address (not a host
 # name) *MUST* be specified for rpcbind(8).
