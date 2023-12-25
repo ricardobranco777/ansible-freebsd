@@ -44,13 +44,6 @@
     mode: 0600
   tags: ['security']
 
-- name: adding user ricardo to wheel group
-  user:
-    name: ricardo
-    groups: wheel
-    append: yes
-  tags: ['security']
-
 - name: Allow user to run sudo
   copy:
     src: sudoers.d/custom

@@ -1,0 +1,8 @@
+---
+- name: adding user ricardo to wheel group
+  user:
+    name: ricardo
+    groups: wheel
+    append: yes
+    shell: /usr/local/bin/bash
+  tags: ['user']
