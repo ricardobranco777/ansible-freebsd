@@ -9,3 +9,11 @@
   shell: service linux start
   args:
     creates: /compat/linux
+
+- name: Install required packages
+  pkgng:
+    name:
+      - debootstrap
+      - linux_base-c7
+    state: present
+  tags: ['pkg']
