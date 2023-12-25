@@ -38,3 +38,10 @@
     value: '1'
     state: present
   tags: ['podman']
+
+- name: Run podman at boot to restart containers
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: podman_enable="YES"
