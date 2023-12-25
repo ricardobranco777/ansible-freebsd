@@ -1,0 +1,27 @@
+---
+- name: Install required packages
+  pkgng:
+    name:
+      - gnome-lite
+      - libva-intel-driver 
+      - urwfonts
+      - xf86-input-evdev
+      - xorg
+    state: present
+  tags: ['pkg', 'gnome']
+
+- name: adding user ricardo to video group
+  user:
+    name: ricardo
+    groups: video
+    append: yes
+  tags: ['gnome']
+
+- name: Configure services for Gnome
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: dbus_enable="YES"
+    - line: gdm_enable="YES"
+  tags: ['gnome']
