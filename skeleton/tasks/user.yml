@@ -6,3 +6,12 @@
     append: yes
     shell: /usr/local/bin/bash
   tags: ['user']
+
+- name: User sysctl's
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  loop:
+    - name: vfs.usermount
+      value: 1
