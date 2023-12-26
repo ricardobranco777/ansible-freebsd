@@ -1,8 +1,8 @@
 ---
-- name: adding user ricardo to wheel group
+- name: Add user to needed groups
   user:
     name: ricardo
-    groups: wheel
+    groups: wheel,operator
     append: yes
     shell: /usr/local/bin/bash
   tags: ['user']
