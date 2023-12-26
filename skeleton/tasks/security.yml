@@ -35,6 +35,14 @@
       regexp: ^security\.bsd\.allow_destructive_dtrace=
   tags: ['security']
 
+- name: Install security packages
+  pkgng:
+    name:
+      - doas
+      - sudo
+    state: present
+  tags: ['pkg', 'security']
+
 - name: Configure doas
   copy:
     src: doas.conf
@@ -44,7 +52,13 @@
     mode: 0600
   tags: ['security']
 
-- name: Allow user to run sudo
+- name: Create sudo group
+  group:
+    name: sudo
+    system: true
+  tags: ['security']
+
+- name: Allow users in groups sudo & wheel to run sudo
   copy:
     src: sudoers.d/custom
     dest: /usr/local/etc/sudoers.d/custom
