@@ -7,3 +7,4 @@
 - include_tasks: user.yml
 - include_tasks: podman.yml
 - include_tasks: qemu.yml
+  when: ansible_virtualization_type == 'kvm'

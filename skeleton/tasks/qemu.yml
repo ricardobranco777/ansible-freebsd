@@ -4,7 +4,7 @@
     name:
       - qemu-guest-agent
     state: present
-  tags: ['pkg']
+  tags: ['pkg', 'qemu']
 
 - name: Autostart QEMU Guest Agent
   lineinfile:
@@ -12,3 +12,4 @@
     line: "{{ item.line }}"
   loop:
     - line: qemu_guest_agent_enable="YES"
+  tags: ['pkg', 'qemu']
