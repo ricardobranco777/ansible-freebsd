@@ -1,0 +1,14 @@
+---
+- name: Install required packages
+  pkgng:
+    name:
+      - qemu-guest-agent
+    state: present
+  tags: ['pkg']
+
+- name: Autostart QEMU Guest Agent
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: qemu_guest_agent_enable="YES"
