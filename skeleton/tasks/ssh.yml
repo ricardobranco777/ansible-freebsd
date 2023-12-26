@@ -22,3 +22,10 @@
     group: wheel
     mode: 0600
   tags: ['ssh']
+
+- name: Configure services
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: sshd_enable="YES"

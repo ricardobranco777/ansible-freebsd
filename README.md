@@ -12,7 +12,7 @@ pkg # Press Y to install pkg
 pkg update
 pkg install python311
 echo PermitRootLogin prohibit-password >> /etc/ssh/sshd_config
-service sshd restart
+service sshd onestart
 ```
 
 Check:
