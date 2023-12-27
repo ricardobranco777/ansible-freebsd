@@ -1,8 +1,6 @@
 include GENERIC
 ident CUSTOM
 
-nomakeoptions     DEBUG
-
 # HyperV drivers and enhancement support
 nodevice          hyperv                  # HyperV drivers
 
