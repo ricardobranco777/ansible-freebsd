@@ -7,3 +7,12 @@
     group: wheel
     mode: 0644
   tags: ['root']
+
+- name: Make vim work
+  copy:
+    src: vimrc
+    dest: /root/.vimrc
+    owner: root
+    group: wheel
+    mode: 0644
+  tags: ['root']

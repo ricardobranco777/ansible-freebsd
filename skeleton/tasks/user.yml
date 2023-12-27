@@ -15,3 +15,13 @@
   loop:
     - name: vfs.usermount
       value: 1
+  tags: ['user', 'sysctl']
+
+- name: Make vim work
+  copy:
+    src: vimrc
+    dest: //home/ricardo/.vimrc
+    owner: ricardo
+    group: ricardo
+    mode: 0644
+  tags: ['user']

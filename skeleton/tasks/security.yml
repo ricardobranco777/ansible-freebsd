@@ -25,7 +25,7 @@
       value: 1
     - name: net.inet.tcp.drop_synfin
       value: 1
-  tags: ['security']
+  tags: ['security', 'sysctl']
 
 # This one should be specified with lineinfile because
 # it returns a random value when reading the sysctl
@@ -34,6 +34,7 @@
     path: /etc/sysctl.conf
     line: kern.randompid=1
     regexp: ^kern\.randompid
+  tags: ['security', 'sysctl']
 
 - name: Security sysctl's in loader.conf
   lineinfile:
@@ -43,7 +44,7 @@
   loop:
     - line: security.bsd.allow_destructive_dtrace=0
       regexp: ^security\.bsd\.allow_destructive_dtrace=
-  tags: ['security']
+  tags: ['security', 'sysctl']
 
 - name: Install security packages
   pkgng:

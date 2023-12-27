@@ -28,6 +28,7 @@
   shell: zfs create -o mountpoint=/var/db/containers zroot/containers
   args:
     creates: /var/db/containers
+  tags: ['podman']
 
 - name: Load PF at boot
   lineinfile:
@@ -42,7 +43,7 @@
     name: net.pf.filter_local
     value: '1'
     state: present
-  tags: ['podman']
+  tags: ['podman', 'sysctl']
 
 - name: Run podman at boot to restart containers
   lineinfile:
@@ -50,3 +51,4 @@
     line: "{{ item.line }}"
   loop:
     - line: podman_enable="YES"
+  tags: ['podman']
