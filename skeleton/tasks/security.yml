@@ -15,10 +15,6 @@
       value: 0
     - name: security.bsd.unprivileged_proc_debug
       value: 0
-    - name: net.inet.tcp.blackhole
-      value: 2
-    - name: net.inet.udp.blackhole
-      value: 1
     - name: net.inet.ip.process_options
       value: 0
     - name: net.inet.ip.random_id
