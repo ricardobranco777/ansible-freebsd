@@ -1,7 +1,7 @@
 include GENERIC
 ident CUSTOM
 
-nomakeoptions     DEBUG=-g                # Build kernel with gdb(1) debug symbols
+nomakeoptions     DEBUG
 
 # HyperV drivers and enhancement support
 nodevice          hyperv                  # HyperV drivers
