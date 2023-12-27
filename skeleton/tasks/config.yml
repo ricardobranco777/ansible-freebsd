@@ -42,3 +42,11 @@
     owner: root
     group: wheel
     mode: 0644
+
+- name: Customize shell
+  copy:
+    src: custom.sh
+    dest: /etc/profile.d/custom.sh
+    owner: root
+    group: wheel
+    mode: 0644

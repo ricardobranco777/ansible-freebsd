@@ -7,6 +7,15 @@
     shell: /usr/local/bin/bash
   tags: ['user']
 
+- name: Fix HOME permissions
+  file:
+    path: /home/ricardo
+    state: directory
+    owner: ricardo
+    group: ricardo
+    mode: '0750'
+  tags: ['user']
+
 - name: User sysctl's
   sysctl:
     name: "{{ item.name }}"
