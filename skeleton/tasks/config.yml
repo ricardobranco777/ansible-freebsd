@@ -34,3 +34,11 @@
     owner: root
     group: wheel
     mode: 0600
+
+- name: Set /etc/motd.template
+  copy:
+    src: motd.template
+    dest: /etc/motd.template
+    owner: root
+    group: wheel
+    mode: 0644
