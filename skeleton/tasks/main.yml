@@ -3,6 +3,7 @@
 - include_tasks: ssh.yml
 - include_tasks: config.yml
 - include_tasks: linux.yml
+- include_tasks: src.yml
 - include_tasks: security.yml
 - include_tasks: user.yml
 - include_tasks: podman.yml

@@ -1,0 +1,15 @@
+include GENERIC
+ident CUSTOM
+
+nomakeoptions     DEBUG=-g                # Build kernel with gdb(1) debug symbols
+
+# HyperV drivers and enhancement support
+nodevice          hyperv                  # HyperV drivers
+
+# Xen HVM Guest Optimizations
+# NOTE: XENHVM depends on xenpci and xentimer.
+# They must be added or removed together.
+nooptions         XENHVM                  # Xen HVM kernel infrastructure
+nodevice          xenefi                  # Xen EFI timer device
+nodevice          xenpci                  # Xen HVM Hypervisor services driver
+nodevice          xentimer                # Xen x86 PV timer device
