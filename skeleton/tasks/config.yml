@@ -34,11 +34,3 @@
     owner: root
     group: wheel
     mode: 0600
-
-- name: Set /root/.gitconfig
-  copy:
-    src: gitconfig
-    dest: /root/.gitconfig
-    owner: root
-    group: wheel
-    mode: 0644
