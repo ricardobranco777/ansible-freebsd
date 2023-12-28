@@ -3,6 +3,7 @@
   pkgng:
     name:
       - bash
+      - bash-completion
       - curl
       - diffutils
       - gawk
