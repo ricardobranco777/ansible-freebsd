@@ -20,6 +20,8 @@
       - mc
       - nmap
       - psmisc
+      - python3
+      - python311
       - rsync
       - screen
       - util-linux
