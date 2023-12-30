@@ -53,4 +53,5 @@
   git:
     repo: https://git.FreeBSD.org/ports.git
     dest: /usr/ports
+    depth: 1
   tags: ['ports']
