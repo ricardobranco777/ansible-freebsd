@@ -2,7 +2,6 @@
 - include_tasks: pkg.yml
 - include_tasks: ssh.yml
 - include_tasks: config.yml
-- include_tasks: root.yml
 - include_tasks: linux.yml
 - include_tasks: src.yml
 - include_tasks: security.yml
