@@ -21,6 +21,8 @@
       value: 1
     - name: net.inet.tcp.drop_synfin
       value: 1
+    - name: kern.coredump
+      value: 0
   tags: ['security', 'sysctl']
 
 # This one should be specified with lineinfile because
