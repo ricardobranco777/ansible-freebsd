@@ -19,6 +19,6 @@
   copy:
     src: CUSTOM
     dest: /usr/src/sys/amd64/conf/CUSTOM
-    owner: root
-    group: wheel
+#    owner: root
+#    group: wheel
     mode: 0644
