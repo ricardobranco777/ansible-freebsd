@@ -1,11 +1,11 @@
 ---
-- name: Add src collection
-  git:
-    repo: https://git.FreeBSD.org/src.git
-    dest: /usr/src
-    depth: 1
-    version: stable/14
-  tags: ['src']
+#- name: Add src collection
+#  git:
+#    repo: https://git.FreeBSD.org/src.git
+#    dest: /usr/src
+#    depth: 1
+#    version: stable/14
+#  tags: ['src']
 
 - name: Copy /etc/make.conf
   copy:
