@@ -4,6 +4,7 @@
     name:
       - bash
       - bash-completion
+      - cdrtools
       - curl
       - coreutils
       - diffutils
