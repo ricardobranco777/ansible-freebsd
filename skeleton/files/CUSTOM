@@ -1,2 +1,4 @@
 include MINIMAL
 ident CUSTOM
+
+nooptions PROCFS
