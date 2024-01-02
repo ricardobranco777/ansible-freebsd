@@ -20,6 +20,8 @@
       - ltrace
       - mc
       - nmap
+      - portmaster
+      - portupgrade
       - psmisc
       - python3
       - python311
