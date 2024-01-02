@@ -51,9 +51,9 @@
     mode: 0600
   tags: ['pkg']
 
-- name: Add ports collection
-  git:
-    repo: https://git.FreeBSD.org/ports.git
-    dest: /usr/ports
-    depth: 1
-  tags: ['ports']
+#- name: Add ports collection
+#  git:
+#    repo: https://git.FreeBSD.org/ports.git
+#    dest: /usr/ports
+#    depth: 1
+#  tags: ['ports']
