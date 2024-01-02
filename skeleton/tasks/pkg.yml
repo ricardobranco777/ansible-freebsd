@@ -13,7 +13,6 @@
       - gmake
       - gnugrep
       - gnupg
-      - go121
       - gsed
       - gtar
       - jq

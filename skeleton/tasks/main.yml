@@ -9,3 +9,4 @@
 - include_tasks: podman.yml
 - include_tasks: qemu.yml
   when: ansible_virtualization_type == 'kvm'
+- include_tasks: golang.yml
