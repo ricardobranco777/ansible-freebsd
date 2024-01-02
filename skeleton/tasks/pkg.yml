@@ -22,6 +22,7 @@
       - nmap
       - portmaster
       - portupgrade
+      - poudriere
       - psmisc
       - python3
       - python311
