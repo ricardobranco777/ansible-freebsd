@@ -9,6 +9,7 @@
       - coreutils
       - diffutils
       - gawk
+      - gh
       - git
       - gmake
       - gnugrep
