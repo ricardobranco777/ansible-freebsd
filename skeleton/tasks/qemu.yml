@@ -1,5 +1,5 @@
 ---
-- name: Install required packages
+- name: Install QEMU Guest Agent
   pkgng:
     name:
       - qemu-guest-agent
