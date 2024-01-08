@@ -17,6 +17,7 @@
       - gsed
       - gtar
       - jq
+      - lesspipe
       - lsof
       - ltrace
       - mc
@@ -32,6 +33,7 @@
       - util-linux
       - vim
       - wget
+      - zfs-stats
       - zip
     state: present
   tags: ['pkg']
