@@ -80,6 +80,7 @@
   file:
     path: "{{ item.path }}"
     mode: "u-s,g-s"
+  ignore_errors: yes
   loop:
     - path: /usr/bin/lpq
     - path: /usr/bin/lpr
