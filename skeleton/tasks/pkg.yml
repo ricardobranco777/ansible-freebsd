@@ -33,8 +33,6 @@
       - util-linux
       - vim
       - wget
-      - zfs-stats
-      - zip
     state: present
   tags: ['pkg']
 
@@ -44,7 +42,7 @@
     state: directory
     owner: root
     group: wheel
-    mode: '0700'
+    mode: '0755'
   tags: ['pkg']
 
 - name: Configure pkg
