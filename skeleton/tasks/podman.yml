@@ -18,6 +18,7 @@
   command: zfs list zroot
   register: zfs_output
   ignore_errors: yes
+  changed_when: false
   tags: ['podman']
 
 - name: Configure storage driver

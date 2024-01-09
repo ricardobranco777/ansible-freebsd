@@ -1,4 +1,22 @@
 ---
+- name: Create /usr/local/etc/pkg/repos/
+  file:
+    path: /usr/local/etc/pkg/repos/
+    state: directory
+    owner: root
+    group: wheel
+    mode: '0755'
+  tags: ['pkg']
+
+- name: Configure pkg
+  copy:
+    src: pkg/FreeBSD.conf
+    dest: /usr/local/etc/pkg/repos/FreeBSD.conf
+    owner: root
+    group: wheel
+    mode: 0600
+  tags: ['pkg']
+
 - name: Install required packages
   pkgng:
     name:
@@ -34,24 +52,6 @@
       - vim
       - wget
     state: present
-  tags: ['pkg']
-
-- name: Create /usr/local/etc/pkg/repos/
-  file:
-    path: /usr/local/etc/pkg/repos/
-    state: directory
-    owner: root
-    group: wheel
-    mode: '0755'
-  tags: ['pkg']
-
-- name: Configure pkg
-  copy:
-    src: pkg/FreeBSD.conf
-    dest: /usr/local/etc/pkg/repos/FreeBSD.conf
-    owner: root
-    group: wheel
-    mode: 0600
   tags: ['pkg']
 
 #- name: Add ports collection
