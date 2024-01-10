@@ -23,8 +23,8 @@
       - bash
       - bash-completion
       - cdrtools
-      - curl
       - coreutils
+      - curl
       - diffutils
       - gawk
       - gh
