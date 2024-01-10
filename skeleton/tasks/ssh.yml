@@ -29,3 +29,4 @@
     line: "{{ item.line }}"
   loop:
     - line: sshd_enable="YES"
+  tags: ['ssh']

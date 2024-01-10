@@ -86,3 +86,4 @@
     - path: /usr/bin/lpr
     - path: /usr/bin/lprm
     - path: /usr/sbin/lpc
+  tags: ['security']
