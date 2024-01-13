@@ -39,14 +39,6 @@
   when: zfs_output.stdout is defined and zfs_output.stdout_lines | length > 0
   tags: ['podman']
 
-- name: Load PF at boot
-  lineinfile:
-    path: /boot/loader.conf
-    line: "{{ item.line }}"
-  loop:
-    - line: pf_load="YES"
-  tags: ['podman', 'pf']
-
 - name: Load sysctl's for podman
   sysctl:
     name: net.pf.filter_local

@@ -5,7 +5,16 @@
     src: proc
     fstype: procfs
     state: mounted
-  tags: ['mount']
+  tags: ['mount', 'config']
+
+- name: Configure boot loader
+  lineinfile:
+    path: /boot/loader.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: pf_load="YES"
+    - line: ufs_enable="YES"
+  tags: ['config']
 
 - name: Configure services
   lineinfile:
@@ -18,6 +27,7 @@
     - line: pf_enable="yes"
     - line: pf_rules="/etc/pf.conf"
     - line: pflog_enable="yes"
+  tags: ['config']
 
 - name: Configure Packet Filter
   copy:
@@ -26,6 +36,7 @@
     owner: root
     group: wheel
     mode: 0600
+  tags: ['config', 'pf']
 
 - name: Set /etc/hosts.allow
   copy:
@@ -34,6 +45,7 @@
     owner: root
     group: wheel
     mode: 0600
+  tags: ['config']
 
 - name: Set /etc/motd.template
   copy:
@@ -42,6 +54,7 @@
     owner: root
     group: wheel
     mode: 0644
+  tags: ['config']
 
 - name: Customize shell
   copy:
@@ -50,3 +63,4 @@
     owner: root
     group: wheel
     mode: 0644
+  tags: ['config']
