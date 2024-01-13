@@ -14,7 +14,7 @@
     dest: /usr/local/etc/pkg/repos/FreeBSD.conf
     owner: root
     group: wheel
-    mode: 0600
+    mode: 0644
   tags: ['pkg']
 
 - name: Install required packages
