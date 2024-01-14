@@ -26,6 +26,7 @@
       - coreutils
       - curl
       - diffutils
+      - findutils
       - gawk
       - gh
       - git
