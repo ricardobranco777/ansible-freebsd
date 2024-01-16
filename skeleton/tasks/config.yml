@@ -56,6 +56,25 @@
     mode: 0644
   tags: ['config']
 
+- name: Check if zroot ZFS dataset exists
+  command: zfs list zroot
+  register: zfs_output
+  ignore_errors: yes
+  changed_when: false
+  tags: ['config']
+
+- name: Mount / with noatime
+  mount:
+    path: /
+    src: /dev/vtbd0s1a
+    fstype: ufs
+    state: present
+    opts: rw,noatime
+    passno: 1
+    dump: 1
+  when: zfs_output.stdout is not defined or zfs_output.stdout_lines | length == 0
+  tags: ['config', 'mount']
+
 - name: Customize shell
   copy:
     src: custom.sh
