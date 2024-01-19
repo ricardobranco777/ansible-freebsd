@@ -45,6 +45,7 @@
     src: fdescfs
     fstype: fdescfs
     state: mounted
+    opts: rw,linrdlnk
   tags: ['linux', 'mount']
 
 # Note: Mounted by default by linux service
