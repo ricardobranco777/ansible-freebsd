@@ -12,50 +12,50 @@
   tags: ['linux']
 
 # Note: Mounted by default by linux service
-- name: Mount /compat/linux/proc
-  mount:
-    path: /compat/linux/proc
-    src: linprocfs
-    fstype: linprocfs
-    state: mounted
-  tags: ['linux', 'mount']
+#- name: Mount /compat/linux/proc
+#  mount:
+#    path: /compat/linux/proc
+#    src: linprocfs
+#    fstype: linprocfs
+#    state: mounted
+#  tags: ['linux', 'mount']
 
 # Note: Mounted by default by linux service
-- name: Mount /compat/linux/sys
-  mount:
-    path: /compat/linux/sys
-    src: linsysfs
-    fstype: linsysfs
-    state: mounted
-  tags: ['linux', 'mount']
+#- name: Mount /compat/linux/sys
+#  mount:
+#    path: /compat/linux/sys
+#    src: linsysfs
+#    fstype: linsysfs
+#    state: mounted
+#  tags: ['linux', 'mount']
 
 # Note: Mounted by default by linux service
-- name: Mount /compat/linux/dev
-  mount:
-    path: /compat/linux/dev
-    src: devfs
-    fstype: devfs
-    state: mounted
-  tags: ['linux', 'mount']
+#- name: Mount /compat/linux/dev
+#  mount:
+#    path: /compat/linux/dev
+#    src: devfs
+#    fstype: devfs
+#    state: mounted
+#  tags: ['linux', 'mount']
 
 # Note: Mounted by default by linux service
-- name: Mount /compat/linux/dev/fd
-  mount:
-    path: /compat/linux/dev/fd
-    src: fdescfs
-    fstype: fdescfs
-    state: mounted
-    opts: rw,linrdlnk
-  tags: ['linux', 'mount']
+#- name: Mount /compat/linux/dev/fd
+#  mount:
+#    path: /compat/linux/dev/fd
+#    src: fdescfs
+#    fstype: fdescfs
+#    state: mounted
+#    opts: rw,linrdlnk
+#  tags: ['linux', 'mount']
 
 # Note: Mounted by default by linux service
-- name: Mount /compat/linux/dev/shm
-  mount:
-    path: /compat/linux/dev/shm
-    src: tmpfs
-    fstype: tmpfs
-    state: mounted
-  tags: ['linux', 'mount']
+#- name: Mount /compat/linux/dev/shm
+#  mount:
+#    path: /compat/linux/dev/shm
+#    src: tmpfs
+#    fstype: tmpfs
+#    state: mounted
+#  tags: ['linux', 'mount']
 
 - name: Install required packages
   pkgng:
