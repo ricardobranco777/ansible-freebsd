@@ -37,6 +37,7 @@
       - gtar
       - jq
       - lesspipe
+      - libluksde
       - lsof
       - ltrace
       - mc
