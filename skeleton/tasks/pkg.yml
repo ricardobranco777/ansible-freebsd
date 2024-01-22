@@ -44,7 +44,6 @@
       - nmap
       - patchutils
       - portmaster
-      - portupgrade
       - poudriere
       - psmisc
       - python3
