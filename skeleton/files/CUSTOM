@@ -2,5 +2,6 @@ include MINIMAL
 ident CUSTOM
 
 nooptions PROCFS
+nooptions GEOM_LABEL
 
 options 	FFS			# Berkeley Fast Filesystem
