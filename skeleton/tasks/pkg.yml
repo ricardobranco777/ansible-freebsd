@@ -33,6 +33,7 @@
       - gmake
       - gnugrep
       - gnupg
+      - groff
       - gsed
       - gtar
       - jq
