@@ -13,7 +13,6 @@
     line: "{{ item.line }}"
   loop:
     - line: pf_load="YES"
-    - line: ufs_enable="YES"
     - line: geom_label_load="YES"
   tags: ['config']
 
@@ -75,6 +74,15 @@
     dump: 1
   when: zfs_output.stdout is not defined or zfs_output.stdout_lines | length == 0
   tags: ['config', 'mount']
+
+- name: Configure boot loader
+  lineinfile:
+    path: /boot/loader.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: ufs_enable="YES"
+  tags: ['config']
+  when: zfs_output.stdout is not defined or zfs_output.stdout_lines | length == 0
 
 - name: Customize shell
   copy:
