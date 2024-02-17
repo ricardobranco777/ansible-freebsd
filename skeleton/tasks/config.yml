@@ -83,12 +83,3 @@
     - line: ufs_enable="YES"
   tags: ['config']
   when: zfs_output.stdout is not defined or zfs_output.stdout_lines | length == 0
-
-- name: Customize shell
-  copy:
-    src: custom.sh
-    dest: /etc/profile.d/custom.sh
-    owner: root
-    group: wheel
-    mode: 0644
-  tags: ['config']
