@@ -42,6 +42,7 @@
       - lsof
       - ltrace
       - mc
+      - modules2tuple
       - nmap
       - patchutils
       - portmaster
