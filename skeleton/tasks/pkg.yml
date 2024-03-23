@@ -55,6 +55,7 @@
       - util-linux
       - vim
       - wget
+      - zfstools
     state: present
   tags: ['pkg']
 
