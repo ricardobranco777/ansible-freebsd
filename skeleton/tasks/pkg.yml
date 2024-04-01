@@ -52,6 +52,7 @@
       - python311
       - rsync
       - screen
+      - tmux
       - util-linux
       - vim
       - wget
