@@ -23,6 +23,10 @@
       value: 1
     - name: kern.coredump
       value: 0
+    - name: security.bsd.hardlink_check_gid
+      value: 1
+    - name: security.bsd.hardlink_check_uid
+      value: 1
   tags: ['security', 'sysctl']
 
 # This one should be specified with lineinfile because
