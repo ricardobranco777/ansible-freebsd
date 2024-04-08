@@ -1,0 +1,22 @@
+---
+# NOTE: Here we disable mitigations to avoid performance issues.
+# See security(7) & mitigations(7)
+- name: Mitigations
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  loop:
+    - name: hw.ibrs_disable
+      value: 1
+    - name: hw.mds_disable
+      value: 1
+    - name: hw.spec_store_bypass_disable
+      value: 1
+    - name: machdep.mitigations.flush_rsb_ctxsw
+      value: 0
+    - name: machdep.mitigations.rngds.enable
+      value: 0
+    - name: vm.pmap.pti
+      value: 0
+  tags: ['security', 'sysctl']
