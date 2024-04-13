@@ -24,4 +24,5 @@
   loop:
     - line: dbus_enable="YES"
     - line: gdm_enable="YES"
+    - line: var_run_enable="YES"
   tags: ['gnome']
