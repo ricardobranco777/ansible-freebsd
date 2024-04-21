@@ -26,6 +26,7 @@
       - coreutils
       - curl
       - diffutils
+      - e2fsprogs
       - findutils
       - gawk
       - gh
