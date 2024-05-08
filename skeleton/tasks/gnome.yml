@@ -5,6 +5,7 @@
       - gnome-lite
       - libva-intel-driver 
       - urwfonts
+      - utouch-kmod
       - xf86-input-evdev
       - xorg
     state: present
@@ -16,6 +17,14 @@
     groups: video
     append: yes
   tags: ['gnome']
+
+- name: Configure boot loader for Gnome
+  lineinfile:
+    path: /boot/loader.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: utouch_load="YES"
+  tags: ['config']
 
 - name: Configure services for Gnome
   lineinfile:
