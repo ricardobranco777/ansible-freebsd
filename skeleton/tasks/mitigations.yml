@@ -17,6 +17,4 @@
       value: 0
     - name: machdep.mitigations.rngds.enable
       value: 0
-    - name: vm.pmap.pti
-      value: 0
   tags: ['security', 'sysctl']
