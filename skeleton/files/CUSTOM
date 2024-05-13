@@ -7,7 +7,9 @@ nooptions GEOM_LABEL
 options 	FFS			# Berkeley Fast Filesystem
 options		P1003_1B_MQUEUE
 
-nooptions	COMPAT_FREEBSD32
+options		COMPAT_FREEBSD32
+options		COMPAT_LINUX32
+
 nooptions	COMPAT_FREEBSD4
 nooptions	COMPAT_FREEBSD5
 nooptions	COMPAT_FREEBSD6
