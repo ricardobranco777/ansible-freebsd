@@ -7,7 +7,6 @@ nooptions GEOM_LABEL
 nooptions WITNESS
 
 options 	FFS			# Berkeley Fast Filesystem
-options		P1003_1B_MQUEUE
 
 options		COMPAT_FREEBSD32
 options		COMPAT_LINUX32
