@@ -44,6 +44,7 @@
       - ltrace
       - mc
       - modules2tuple
+      - moreutils
       - nmap
       - patchutils
       - portmaster
