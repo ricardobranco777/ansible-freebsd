@@ -41,7 +41,6 @@
       - lesspipe
       - libluksde
       - lsof
-      - ltrace
       - mc
       - modules2tuple
       - moreutils
