@@ -46,7 +46,6 @@
       - moreutils
       - nmap
       - patchutils
-      - portmaster
       - poudriere
       - psmisc
       - python3
