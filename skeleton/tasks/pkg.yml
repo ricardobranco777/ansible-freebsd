@@ -46,6 +46,7 @@
       - moreutils
       - nmap
       - patchutils
+      - pkgconf
       - poudriere
       - psmisc
       - python3
