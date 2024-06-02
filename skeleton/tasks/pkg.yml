@@ -47,6 +47,7 @@
       - nmap
       - patchutils
       - pkgconf
+      - portlint
       - poudriere
       - psmisc
       - python3
