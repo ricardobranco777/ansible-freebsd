@@ -42,7 +42,6 @@
       - poudriere
       - psmisc
       - python3
-      - python311
       - rsync
       - screen
       - tmux
