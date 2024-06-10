@@ -1,17 +1,8 @@
 ---
-- name: Create /usr/local/etc/pkg/repos/
-  file:
-    path: /usr/local/etc/pkg/repos/
-    state: directory
-    owner: root
-    group: wheel
-    mode: '0755'
-  tags: ['pkg']
-
 - name: Configure pkg
   copy:
     src: pkg/FreeBSD.conf
-    dest: /usr/local/etc/pkg/repos/FreeBSD.conf
+    dest: /etc/pkg/FreeBSD.conf
     owner: root
     group: wheel
     mode: 0644
