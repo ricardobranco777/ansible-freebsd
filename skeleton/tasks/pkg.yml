@@ -30,8 +30,6 @@
       - gtar
       - jq
       - lesspipe
-      - libluksde
-      - lsof
       - mc
       - modules2tuple
       - moreutils
@@ -48,7 +46,6 @@
       - util-linux
       - vim
       - wget
-      - zfstools
     state: present
   tags: ['pkg']
 
