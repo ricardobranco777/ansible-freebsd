@@ -14,6 +14,8 @@
   loop:
     - line: pf_load="YES"
     - line: geom_label_load="YES"
+    - line: cpu_microcode_load="YES"
+    - line: cpu_microcode_name="/boot/firmware/intel-ucode.bin"
   tags: ['config']
 
 - name: Configure services

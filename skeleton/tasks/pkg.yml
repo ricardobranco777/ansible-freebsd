@@ -15,6 +15,7 @@
       - bash-completion
       - cdrtools
       - coreutils
+      - cpu-microcode-intel
       - curl
       - diffutils
       - e2fsprogs
