@@ -1,8 +1,10 @@
 
 ```
+sudo kldload filemon
 cd /usr/src
 make -j8 buildworld
 make -j8 buildkernel
+sudo bectl create -r default@$(date +%y%m%d%H%m)
 sudo make installkernel
 sudo reboot
 sudo etcupdate -p
