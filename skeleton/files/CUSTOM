@@ -1,13 +1,15 @@
-include MINIMAL
+include GENERIC
 ident CUSTOM
 
-nooptions PROCFS
-nooptions GEOM_LABEL
+# Compile these as modules
+nooptions	CD9660
+nooptions	PROCFS
 
-options 	FFS			# Berkeley Fast Filesystem
+nooptions	SYSVSHM
+nooptions	SYSVMSG
+nooptions	SYSVSEM
 
-options		COMPAT_FREEBSD32
-options		COMPAT_LINUX32
+#nooptions	COMPAT_FREEBSD32
 
 nooptions	COMPAT_FREEBSD4
 nooptions	COMPAT_FREEBSD5
@@ -21,3 +23,18 @@ nooptions	COMPAT_FREEBSD10
 #nooptions	COMPAT_FREEBSD11
 nooptions	COMPAT_FREEBSD12
 nooptions	COMPAT_FREEBSD13
+
+# sys/conf/std.debug is included on -CURRENT
+#nooptions	BUF_TRACKING		# Track buffer history
+#nooptions	DDB			# Support DDB.
+#nooptions	FULL_BUF_TRACKING	# Track more buffer history
+#nooptions	GDB			# Support remote GDB.
+#nooptions	DEADLKRES		# Enable the deadlock resolver
+#nooptions	INVARIANTS		# Enable calls of extra sanity checking
+#nooptions	INVARIANT_SUPPORT	# Extra sanity checks of internal structures, required by INVARIANTS
+#nooptions	QUEUE_MACRO_DEBUG_TRASH	# Trash queue(2) internal pointers on invalidation
+#nooptions	WITNESS			# Enable checks to detect deadlocks and cycles
+#nooptions	WITNESS_SKIPSPIN	# Don't run witness on spinlocks for speed
+#nooptions	MALLOC_DEBUG_MAXZONES=8	# Separate malloc(9) zones
+#nooptions	VERBOSE_SYSINIT=0	# Support debug.verbose_sysinit, off by default
+#nooptions	ALT_BREAK_TO_DEBUGGER	# Enter debugger on keyboard escape sequence
