@@ -24,8 +24,9 @@
     line: "{{ item.line }}"
   loop:
     - line: clear_tmp_enable="YES"
-    - line: syslogd_flags="-ss"
+    - line: smartd_enable="YES"
     - line: rpcbind_flags="-W"
+    - line: syslogd_flags="-ss"
     - line: pf_enable="yes"
     - line: pf_rules="/etc/pf.conf"
     - line: pflog_enable="yes"
