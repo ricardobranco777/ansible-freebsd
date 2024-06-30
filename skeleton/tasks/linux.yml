@@ -62,6 +62,8 @@
     name:
       - debootstrap
       - linux_base-rl9
+      - linux-rl9-curl
+      - linux-rl9-wget
     state: present
   tags: ['pkg', 'linux']
 
