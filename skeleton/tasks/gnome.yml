@@ -2,16 +2,14 @@
 - name: Install required packages
   pkgng:
     name:
+      - drm-kmod
       - gnome-lite
       - libva-intel-driver 
-      - urwfonts
-      - utouch-kmod
-      - xf86-input-evdev
-      - xorg
+      - mesa-dri
     state: present
   tags: ['pkg', 'gnome']
 
-- name: adding user ricardo to video group
+- name: Add user to video group
   user:
     name: ricardo
     groups: video
@@ -31,6 +29,7 @@
     path: /etc/rc.conf
     line: "{{ item.line }}"
   loop:
+    - line: kld_list="i915kms"
     - line: dbus_enable="YES"
     - line: gdm_enable="YES"
     - line: var_run_enable="YES"
