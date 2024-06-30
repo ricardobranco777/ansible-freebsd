@@ -5,6 +5,12 @@
     line: "linux_enable=\"YES\""
   tags: ['linux']
 
+- name: Create ZFS dataset for linux
+  shell: zfs create -o mountpoint=/compat/linux zroot/linux
+  args:
+    creates: /compat/linux
+  tags: ['linux, 'zfs']
+
 - name: Start linux service
   shell: service linux start
   args:
