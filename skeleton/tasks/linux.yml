@@ -62,8 +62,11 @@
     name:
       - debootstrap
       - linux_base-rl9
+      - linux-rl9-brotli
+      - linux-rl9-ca-certificates
       - linux-rl9-curl
-      - linux-rl9-wget
+      - linux-rl9-libevent
+      - linux-rl9-libsigsegv
     state: present
   tags: ['pkg', 'linux']
 
