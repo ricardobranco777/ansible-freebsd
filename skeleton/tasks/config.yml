@@ -12,7 +12,6 @@
     path: /boot/loader.conf
     line: "{{ item.line }}"
   loop:
-    - line: pf_load="YES"
     - line: geom_label_load="YES"
     - line: cpu_microcode_load="YES"
     - line: cpu_microcode_name="/boot/firmware/intel-ucode.bin"
@@ -24,22 +23,10 @@
     line: "{{ item.line }}"
   loop:
     - line: clear_tmp_enable="YES"
-    - line: smartd_enable="YES"
     - line: rpcbind_flags="-W"
+    - line: smartd_enable="YES"
     - line: syslogd_flags="-ss"
-    - line: pf_enable="yes"
-    - line: pf_rules="/etc/pf.conf"
-    - line: pflog_enable="yes"
   tags: ['config']
-
-- name: Configure Packet Filter
-  copy:
-    src: pf.conf
-    dest: /etc/pf.conf
-    owner: root
-    group: wheel
-    mode: 0600
-  tags: ['config', 'pf']
 
 - name: Set /etc/hosts.allow
   copy:
@@ -78,7 +65,8 @@
   when: zfs_output.stdout is not defined or zfs_output.stdout_lines | length == 0
   tags: ['config', 'mount']
 
-- name: Configure boot loader
+# This allows MINIMAL to boot
+- name: Load UFS if not ZFS
   lineinfile:
     path: /boot/loader.conf
     line: "{{ item.line }}"
