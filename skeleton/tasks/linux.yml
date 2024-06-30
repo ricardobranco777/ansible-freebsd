@@ -61,7 +61,7 @@
   pkgng:
     name:
       - debootstrap
-      #- linux_base-c7
+      - linux_base-rl9
     state: present
   tags: ['pkg', 'linux']
 
