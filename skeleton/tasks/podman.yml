@@ -14,10 +14,13 @@
     state: mounted
   tags: ['podman']
 
-- name: Create ZFS container pool
-  shell: zfs create -o mountpoint=/var/db/containers zroot/containers
-  args:
-    creates: /var/db/containers
+# zfs create -o mountpoint=/var/db/containers zroot/containers
+- name: Create ZFS containers volume
+  zfs:
+    name: zroot/containers
+    state: present
+    extra_zfs_properties:
+      mountpoint: /var/db/containers
   tags: ['podman', 'zfs']
 
 - name: Load sysctl's for podman
