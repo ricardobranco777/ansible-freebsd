@@ -11,6 +11,12 @@
     creates: /compat/linux
   tags: ['linux']
 
+- name: Create /etc/resolv.conf
+  shell: cp /etc/resolv.conf /compat/linux/etc/resolv.conf
+  args:
+    creates: /compat/linux/etc/resolv.conf
+  tags: ['linux']
+
 # Note: Mounted by default by linux service
 #- name: Mount /compat/linux/proc
 #  mount:
