@@ -13,4 +13,3 @@
 - include_tasks: qemu.yml
   when: ansible_virtualization_type == 'kvm'
 - include_tasks: golang.yml
-- include_tasks: python.yml

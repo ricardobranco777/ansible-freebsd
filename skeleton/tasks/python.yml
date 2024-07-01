@@ -1,7 +1,0 @@
----
-- name: Create symbolic link for python
-  file:
-    src: "{{ ansible_facts.python.executable }}"
-    dest: "{{ ansible_facts.python.executable | dirname }}/python"
-    state: link
-  ignore_errors: true
