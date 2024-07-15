@@ -37,6 +37,7 @@
       - nmap
       - patchutils
       - pkgconf
+      - pigz
       - portlint
       - poudriere
       - psmisc
