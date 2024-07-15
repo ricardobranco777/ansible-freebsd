@@ -8,6 +8,8 @@
 - include_tasks: security.yml
 - include_tasks: user.yml
 - include_tasks: podman.yml
+- include_tasks: firmware.yml
+  when: ansible_virtualization_type != 'kvm'
 - include_tasks: mitigations.yml
   when: ansible_virtualization_type == 'kvm'
 - include_tasks: qemu.yml

@@ -1,0 +1,7 @@
+---
+- name: Install firmware
+  pkgng:
+    name:
+      - cpu-microcode-intel
+    state: present
+  tags: ['pkg', 'firmware']
