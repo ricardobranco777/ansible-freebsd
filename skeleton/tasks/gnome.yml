@@ -29,7 +29,6 @@
     path: /etc/rc.conf
     line: "{{ item.line }}"
   loop:
-    - line: kld_list="i915kms"
     - line: dbus_enable="YES"
     - line: gdm_enable="YES"
     - line: var_run_enable="YES"
