@@ -9,6 +9,19 @@
     state: present
   tags: ['pkg', 'firmware']
 
+- name: Configure boot loader for firmware
+  lineinfile:
+    path: /boot/loader.conf
+    line: "{{ item.line }}"
+  loop:
+    # AMD
+    #- line: amdtemp_load="YES"
+    # Intel
+    - line: coretemp_load="YES"
+    - line: cpu_microcode_load="YES"
+    - line: cpu_microcode_name="/boot/firmware/intel-ucode.bin"
+  tags: ['firmware']
+
 - name: Configure /etc/rc.conf for firmware
   lineinfile:
     path: /etc/rc.conf
