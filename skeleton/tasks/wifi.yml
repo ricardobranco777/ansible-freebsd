@@ -1,0 +1,20 @@
+---
+- name: Copy wpa_supplicant.conf
+  copy:
+    src: wpa_supplicant.conf
+    dest: /etc/wpa_supplicant.conf
+    owner: root
+    group: wheel
+    mode: 0600
+  tags: ['wifi']
+
+- name: Configure WiFi
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item.line }}"
+  loop:
+    -line: wlans_iwm0="wlan0"
+    - line: ifconfig_wlan0="WPA DHCP"
+    - line: ifconfig_wlan0_ipv6="inet6 accept_rtadv"
+    - line: create_args_wlan0="country DE regdomain ETSI"
+  tags: ['wifi']
