@@ -13,6 +13,9 @@
     line: "{{ item.line }}"
   loop:
     - line: geom_label_load="YES"
+    # Splash on vt(4)
+    - line: boot_mute="YES"
+    - line: splash="/boot/images/freebsd-logo-rev.png"
   tags: ['config']
 
 - name: Configure services
