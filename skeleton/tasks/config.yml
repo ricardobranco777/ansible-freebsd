@@ -46,3 +46,13 @@
     group: wheel
     mode: 0644
   tags: ['config']
+
+- name: Set sysctl's
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  loop:
+    - name: kern.geom.label.gptid.enable
+      value: 0
+  tags: ['config', 'sysctl']
