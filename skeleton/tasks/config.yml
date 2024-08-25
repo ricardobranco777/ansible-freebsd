@@ -13,6 +13,7 @@
     line: "{{ item.line }}"
   loop:
     - line: geom_label_load="YES"
+    - line: kern.geom.label.gptid.enable=0
     # Splash on vt(4)
     - line: boot_mute="YES"
     - line: splash="/boot/images/freebsd-logo-rev.png"
@@ -46,13 +47,3 @@
     group: wheel
     mode: 0644
   tags: ['config']
-
-- name: Set sysctl's
-  sysctl:
-    name: "{{ item.name }}"
-    value: "{{ item.value }}"
-    state: present
-  loop:
-    - name: kern.geom.label.gptid.enable
-      value: 0
-  tags: ['config', 'sysctl']
