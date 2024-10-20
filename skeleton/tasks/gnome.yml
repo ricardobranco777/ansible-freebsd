@@ -46,3 +46,10 @@
     mode: 0644
   tags: ['gnome']
 
+- name: Mount /var/run if not mounted
+  mount:
+    path: /var/run
+    src: tmpfs
+    fstype: tmpfs
+    state: mounted
+  tags: ['mount', 'gnome']
