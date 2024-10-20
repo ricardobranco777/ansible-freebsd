@@ -6,6 +6,7 @@
       - gnome-lite
       - libva-intel-driver 
       - mesa-dri
+      - xorg
     state: present
   tags: ['pkg', 'gnome']
 
@@ -22,6 +23,7 @@
     line: "{{ item.line }}"
   loop:
     - line: utouch_load="YES"
+  when: ansible_virtualization_type == 'kvm'
   tags: ['config']
 
 - name: Configure services for Gnome
@@ -33,3 +35,14 @@
     - line: gdm_enable="YES"
     - line: var_run_enable="YES"
   tags: ['gnome']
+
+# For UEFI. For BIOS use VESA
+- name: Configure SCFB
+  copy:
+    src: 20-scfb.conf
+    dest: /usr/local/etc/X11/xorg.conf.d/20-scfb.conf
+    owner: root
+    group: wheel
+    mode: 0644
+  tags: ['gnome']
+

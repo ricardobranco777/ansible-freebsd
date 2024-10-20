@@ -28,5 +28,5 @@
     line: "{{ item.line }}"
   loop:
     # Also valid: amdgpu radeonkms
-    - line: kld_list="i915kms"
+    - line: '#kld_list="i915kms"'
   tags: ['firmware']
