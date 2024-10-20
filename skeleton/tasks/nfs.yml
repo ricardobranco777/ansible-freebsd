@@ -1,0 +1,31 @@
+---
+- name: Configure NFS
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: nfs_server_enable="YES"
+    - line: mountd_enable="YES"
+    # NFS v2/v3
+    - line: rpcbind_enable="YES"
+    - line: rpc_lockd_enable="YES"
+    - line: rpc_statd_enable="YES"
+    # NFS v4
+    - line: nfsv4_server_enable="YES"
+    - line: nfsuserd_enable="YES"
+  tags: ['nfs']
+
+- name: Create /etc/exports
+  shell: touch /etc/exports
+  args:
+    creates: /etc/exports
+  tags: ['nfs']
+
+- name: Set /etc/hosts.allow
+  copy:
+    src: hosts.allow
+    dest: /etc/hosts.allow
+    owner: root
+    group: wheel
+    mode: 0600
+  tags: ['nfs']
