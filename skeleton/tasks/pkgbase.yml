@@ -1,0 +1,31 @@
+---
+# https://wiki.freebsd.org/PkgBase
+
+- name: Backup libraries
+  lineinfile:
+    path: /usr/local/etc/pkg.conf
+    line: "{{ item.line }}"
+    regexp: "{{ item.regexp }}"
+  loop:
+    - line: BACKUP_LIBRARIES=true
+      regexp: ^BACKUP_LIBRARIES=
+    - line: BACKUP_LIBRARY_PATH=/usr/local/lib/compat/pkg
+      regexp: ^BACKUP_LIBRARY_PATH=
+  tags: ['pkg', 'pkgbase']
+
+- name: Configure pkgbase repo
+  copy:
+    src: FreeBSD-base.conf
+    dest: /usr/local/etc/pkg/repos/FreeBSD-base.conf
+    owner: root
+    group: wheel
+    mode: 0600
+  tags: ['pkg', 'pkgbase']
+
+- name: Install FreeBSD base packages
+  pkgng:
+    name:
+      - FreeBSD-*
+    state: present
+  tags: ['pkg', 'pkgbase']
+
