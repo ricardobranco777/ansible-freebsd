@@ -1,0 +1,22 @@
+---
+- name: Install Intel packages
+  pkgng:
+    name:
+      - libva-intel-driver 
+    state: present
+  tags: ['pkg', 'intel']
+
+- name: Configure /etc/rc.conf for nvidai
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: 'kld_list="i915kms"'
+  tags: ['intel']
+
+- name: Add gpu-firmware-intel-kmod to PORTS_MODULES
+  lineinfile:
+    path: /etc/make.conf
+    regexp: '^PORTS_MODULES.*graphics/gpu-firmware-intel-kmod'
+    line: 'PORTS_MODULES+= graphics/gpu-firmware-intel-kmod'
+    state: present

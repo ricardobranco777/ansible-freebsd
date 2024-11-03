@@ -4,7 +4,7 @@
     name:
       - drm-kmod
       - gnome-lite
-      - libva-intel-driver 
+      - libva-utils
       - mesa-dri
       - xorg
     state: present
