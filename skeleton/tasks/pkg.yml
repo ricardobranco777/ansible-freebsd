@@ -35,6 +35,7 @@
       - moreutils
       - nmap
       - patchutils
+      - pciutils
       - pkgconf
       - pigz
       - portlint
