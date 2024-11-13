@@ -2,7 +2,7 @@
 - name: Enable linux binary compatibility
   lineinfile:
     path: /etc/rc.conf
-    line: "linux_enable=\"YES\""
+    line: linux_enable="YES"
   tags: ['linux']
 
 # zfs create -o mountpoint=/compat/linux zroot/linux
@@ -18,12 +18,6 @@
   shell: service linux start
   args:
     creates: /compat/linux
-  tags: ['linux']
-
-- name: Create /etc/resolv.conf
-  shell: cp /etc/resolv.conf /compat/linux/etc/resolv.conf
-  args:
-    creates: /compat/linux/etc/resolv.conf
   tags: ['linux']
 
 # Note: Mounted by default by linux service
@@ -84,6 +78,12 @@
       - linux-rl9-libsigsegv
     state: present
   tags: ['pkg', 'linux']
+
+- name: Create /etc/resolv.conf
+  shell: install /etc/resolv.conf /compat/linux/etc/resolv.conf
+  args:
+    creates: /compat/linux/etc/resolv.conf
+  tags: ['linux']
 
 # Uncomment and add the mounts above for Ubuntu chroot on FreeBSD
 #- name: Create Ubuntu debootstrap

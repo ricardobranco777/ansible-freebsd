@@ -10,6 +10,7 @@
     state: present
   tags: ['pkg', 'gnome']
 
+# pw groupmod video -m ricardo
 - name: Add user to video group
   user:
     name: ricardo

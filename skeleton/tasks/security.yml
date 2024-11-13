@@ -65,13 +65,7 @@
     mode: 0600
   tags: ['security']
 
-- name: Create sudo group
-  group:
-    name: sudo
-    system: true
-  tags: ['security']
-
-- name: Allow users in groups sudo & wheel to run sudo
+- name: Configure sudo
   copy:
     src: sudoers.d/custom
     dest: /usr/local/etc/sudoers.d/custom

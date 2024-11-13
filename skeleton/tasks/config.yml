@@ -13,11 +13,11 @@
     line: "{{ item.line }}"
   loop:
     - line: geom_label_load="YES"
-    - line: kern.geom.label.gptid.enable=0
-    - line: kern.geom.label.disk_ident.enable=0
+    - line: kern.geom.label.gptid.enable="0"
+    - line: kern.geom.label.disk_ident.enable="0"
     # Splash on vt(4)
-    - line: boot_mute="YES"
-    - line: splash="/boot/images/freebsd-logo-rev.png"
+    - line: #boot_mute="YES"
+    - line: #splash="/boot/images/freebsd-logo-rev.png"
   tags: ['config']
 
 - name: Configure services
