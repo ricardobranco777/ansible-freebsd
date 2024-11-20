@@ -4,9 +4,12 @@
     name:
       - drm-kmod
       - gnome-lite
+      - gnome-terminal
       - libva-utils
       - mesa-dri
+      - urwfonts
       - xorg
+      - xwayland
     state: present
   tags: ['pkg', 'gnome']
 
@@ -42,6 +45,15 @@
   copy:
     src: 20-scfb.conf
     dest: /usr/local/etc/X11/xorg.conf.d/20-scfb.conf
+    owner: root
+    group: wheel
+    mode: 0644
+  tags: ['gnome']
+
+- name: Configure fonts
+  copy:
+    src: 90-fonts.conf
+    dest: /usr/local/etc/X11/xorg.conf.d/90-fonts.conf
     owner: root
     group: wheel
     mode: 0644

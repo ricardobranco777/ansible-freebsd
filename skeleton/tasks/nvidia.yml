@@ -1,0 +1,24 @@
+---
+- name: Install Nvidia packages
+  pkgng:
+    name:
+      - nvidia-driver
+      - nvidia-drm-kmod
+    state: present
+  tags: ['pkg', 'nvidia']
+
+- name: Configure boot loader for firmware
+  lineinfile:
+    path: /boot/loader.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: hw.nvidiadrm.modeset=1
+  tags: ['nvidia']
+
+- name: Configure /etc/rc.conf for nvidai
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item.line }}"
+  loop:
+    - line: '#kld_list="nvidia-modeset"'
+  tags: ['nvidai']
