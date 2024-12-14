@@ -8,6 +8,24 @@
     mode: 0644
   tags: ['pkg']
 
+- name: Create /usr/local/etc/pkg/repos/
+  file:
+    path: /usr/local/etc/pkg/repos
+    state: directory
+    owner: root
+    group: wheel
+    mode: '0755'
+  tags: ['pkg']
+
+- name: Add FreeBSD-kmods
+  copy:
+    src: pkg/FreeBSD-kmods.conf
+    dest: /usr/local/etc/pkg/repos/FreeBSD-kmods.conf
+    owner: root
+    group: wheel
+    mode: 0644
+  tags: ['pkg']
+
 - name: Install required packages
   pkgng:
     name:
