@@ -1,2 +1,1 @@
-bsd.local ansible_user=root
-freebsd.local ansible_user=root
+freebsdx.local ansible_user=root

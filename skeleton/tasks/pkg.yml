@@ -24,7 +24,9 @@
     owner: root
     group: wheel
     mode: 0644
+  when: not ansible_facts['distribution_release'].endswith("-CURRENT")
   tags: ['pkg']
+
 
 - name: Install required packages
   pkgng:
@@ -35,7 +37,6 @@
       - coreutils
       - curl
       - diffutils
-      - e2fsprogs
       - findutils
       - gawk
       - gh
@@ -67,14 +68,15 @@
       - util-linux
       - vim
       - wget
+      - zfstools
     state: present
   tags: ['pkg']
 
-- name: Add ports collection
-  shell: git clone --depth 1 --branch stable/14 https://github.com/freebsd/freebsd-ports /usr/ports
-  args:
-    creates: /usr/ports
-  tags: ['ports']
+#- name: Add ports collection
+#  shell: git clone --depth 1 --branch stable/14 https://github.com/freebsd/freebsd-ports /usr/ports
+#  args:
+#    creates: /usr/ports
+#  tags: ['ports']
 
 #- name: Add ports collection
 #  git:

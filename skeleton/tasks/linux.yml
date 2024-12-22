@@ -12,7 +12,7 @@
     state: present
     extra_zfs_properties:
       mountpoint: /compat/linux
-  tags: ['linux, 'zfs']
+  tags: ['linux', 'zfs']
 
 - name: Start linux service
   shell: service linux start

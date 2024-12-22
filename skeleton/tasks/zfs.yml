@@ -1,7 +1,0 @@
----
-- name: Install ZFS packages
-  pkgng:
-    name:
-      - zfstools
-    state: present
-  tags: ['zfs', 'pkg']

@@ -1,9 +1,9 @@
 ---
-- name: Add src collection
-  shell: git clone --depth 1 --branch stable/14 https://github.com/freebsd/freebsd-src /usr/src
-  args:
-    creates: /usr/src
-  tags: ['src']
+#- name: Add src collection
+#  shell: git clone --depth 1 --branch stable/14 https://github.com/freebsd/freebsd-src /usr/src
+#  args:
+#    creates: /usr/src
+#  tags: ['src']
 
 #- name: Add src collection
 #  git:
@@ -31,11 +31,11 @@
     mode: 0644
   tags: ['src']
 
-- name: Copy CUSTOM kernel configuration
-  copy:
-    src: CUSTOM
-    dest: /usr/src/sys/amd64/conf/CUSTOM
+#- name: Copy CUSTOM kernel configuration
+#  copy:
+#    src: CUSTOM
+#    dest: /usr/src/sys/amd64/conf/CUSTOM
 #    owner: root
 #    group: wheel
-    mode: 0644
-  tags: ['src']
+#    mode: 0644
+#  tags: ['src']
