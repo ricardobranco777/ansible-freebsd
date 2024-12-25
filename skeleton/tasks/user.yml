@@ -1,7 +1,7 @@
 ---
 - name: Add user to needed groups
   user:
-    name: ricardo
+    name: "{{ target_user }}"
     groups: wheel,operator
     append: yes
     shell: /usr/local/bin/bash
@@ -9,10 +9,10 @@
 
 - name: Fix HOME permissions
   file:
-    path: /home/ricardo
+    path: "/home/{{ target_user }}"
     state: directory
-    owner: ricardo
-    group: ricardo
+    owner: "{{ target_user }}"
+    group: "{{ target_user }}"
     mode: '0750'
   tags: ['user']
 

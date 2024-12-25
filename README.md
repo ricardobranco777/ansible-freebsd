@@ -16,10 +16,10 @@ service sshd restart
 ```
 
 Check:
-`ansible-playbook -v -C -i inventory main.yml`
+`ansible-playbook -v -C -i inventory.yml main.yml`
 
 Run with:
-`ansible-playbook -v -i inventory main.yml`
+`ansible-playbook -v -i inventory.yml main.yml`
 
 TODO
   - After running this playbook the first time run: `pkg update -f && pkg upgrade -y && pkg clean -a -y && pkg audit -F `

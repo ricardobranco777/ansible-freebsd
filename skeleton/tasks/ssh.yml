@@ -23,6 +23,16 @@
     mode: 0600
   tags: ['ssh']
 
+- name: Add AllowUsers configuration
+  copy:
+    dest: /etc/ssh/sshd_config.d/users.conf
+    content: |
+      AllowUsers root {{ target_user }}
+    owner: root
+    group: root
+    mode: '0600'
+  tags: ['ssh']
+
 - name: Configure services
   lineinfile:
     path: /etc/rc.conf

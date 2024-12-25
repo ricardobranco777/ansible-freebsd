@@ -13,10 +13,10 @@
     state: present
   tags: ['pkg', 'gnome']
 
-# pw groupmod video -m ricardo
+# pw groupmod video -m $USER
 - name: Add user to video group
   user:
-    name: ricardo
+    name: "{{ target_user }}"
     groups: video
     append: yes
   tags: ['gnome']
