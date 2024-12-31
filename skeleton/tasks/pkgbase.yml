@@ -11,7 +11,6 @@
       regexp: ^BACKUP_LIBRARIES=
     - line: BACKUP_LIBRARY_PATH=/usr/local/lib/compat/pkg
       regexp: ^BACKUP_LIBRARY_PATH=
-  tags: ['pkg', 'pkgbase']
 
 - name: Configure pkgbase repo
   copy:
@@ -20,7 +19,6 @@
     owner: root
     group: wheel
     mode: 0600
-  tags: ['pkg', 'pkgbase']
 
 - name: Install FreeBSD base packages
   pkgng:
@@ -109,5 +107,4 @@
       - FreeBSD-zfs
       - FreeBSD-zoneinfo
     state: present
-  tags: ['pkg', 'pkgbase']
 

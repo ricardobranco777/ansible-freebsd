@@ -3,7 +3,6 @@
   lineinfile:
     path: /etc/rc.conf
     line: linux_enable="YES"
-  tags: ['linux']
 
 # zfs create -o mountpoint=/compat/linux zroot/linux
 - name: Create ZFS dataset for linux
@@ -12,13 +11,11 @@
     state: present
     extra_zfs_properties:
       mountpoint: /compat/linux
-  tags: ['linux', 'zfs']
 
 - name: Start linux service
   shell: service linux start
   args:
     creates: /compat/linux
-  tags: ['linux']
 
 # Note: Mounted by default by linux service
 #- name: Mount /compat/linux/proc
@@ -27,7 +24,6 @@
 #    src: linprocfs
 #    fstype: linprocfs
 #    state: mounted
-#  tags: ['linux', 'mount']
 
 # Note: Mounted by default by linux service
 #- name: Mount /compat/linux/sys
@@ -36,7 +32,6 @@
 #    src: linsysfs
 #    fstype: linsysfs
 #    state: mounted
-#  tags: ['linux', 'mount']
 
 # Note: Mounted by default by linux service
 #- name: Mount /compat/linux/dev
@@ -45,7 +40,6 @@
 #    src: devfs
 #    fstype: devfs
 #    state: mounted
-#  tags: ['linux', 'mount']
 
 # Note: Mounted by default by linux service
 #- name: Mount /compat/linux/dev/fd
@@ -55,7 +49,6 @@
 #    fstype: fdescfs
 #    state: mounted
 #    opts: rw,linrdlnk
-#  tags: ['linux', 'mount']
 
 # Note: Mounted by default by linux service
 #- name: Mount /compat/linux/dev/shm
@@ -64,7 +57,6 @@
 #    src: tmpfs
 #    fstype: tmpfs
 #    state: mounted
-#  tags: ['linux', 'mount']
 
 - name: Install required packages
   pkgng:
@@ -77,17 +69,14 @@
       - linux-rl9-libevent
       - linux-rl9-libsigsegv
     state: present
-  tags: ['pkg', 'linux']
 
 - name: Create /etc/resolv.conf
   shell: install /etc/resolv.conf /compat/linux/etc/resolv.conf
   args:
     creates: /compat/linux/etc/resolv.conf
-  tags: ['linux']
 
 # Uncomment and add the mounts above for Ubuntu chroot on FreeBSD
 #- name: Create Ubuntu debootstrap
 #  shell: debootstrap jammy /compat/ubuntu
 #  args:
 #    creates: /compat/ubuntu
-#  tags: ['linux']

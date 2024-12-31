@@ -6,13 +6,11 @@
     owner: root
     group: wheel
     mode: '0700'
-  tags: ['ssh']
 
 - name: Add Include directive to sshd_config
   lineinfile:
     path: /etc/ssh/sshd_config
     line: "Include /etc/ssh/sshd_config.d/*.conf"
-  tags: ['ssh']
 
 - name: Add custom openSSH configuration
   copy:
@@ -21,7 +19,6 @@
     owner: root
     group: wheel
     mode: 0600
-  tags: ['ssh']
 
 - name: Add AllowUsers configuration
   copy:
@@ -31,7 +28,6 @@
     owner: root
     group: root
     mode: '0600'
-  tags: ['ssh']
 
 - name: Configure services
   lineinfile:
@@ -39,4 +35,3 @@
     line: "{{ item.line }}"
   loop:
     - line: sshd_enable="YES"
-  tags: ['ssh']

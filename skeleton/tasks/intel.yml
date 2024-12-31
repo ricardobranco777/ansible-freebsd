@@ -4,7 +4,6 @@
     name:
       - libva-intel-driver 
     state: present
-  tags: ['pkg', 'intel']
 
 - name: Configure /etc/rc.conf for nvidai
   lineinfile:
@@ -12,7 +11,6 @@
     line: "{{ item.line }}"
   loop:
     - line: 'kld_list="i915kms"'
-  tags: ['intel']
 
 - name: Add gpu-firmware-intel-kmod to PORTS_MODULES
   lineinfile:

@@ -4,7 +4,6 @@
     name:
       - podman-suite
     state: present
-  tags: ['pkg', 'podman']
 
 - name: Mount /dev/fd
   mount:
@@ -12,7 +11,6 @@
     src: fdesc
     fstype: fdescfs
     state: mounted
-  tags: ['podman']
 
 # zfs create -o mountpoint=/var/db/containers zroot/containers
 - name: Create ZFS containers volume
@@ -21,14 +19,12 @@
     state: present
     extra_zfs_properties:
       mountpoint: /var/db/containers
-  tags: ['podman', 'zfs']
 
 - name: Load sysctl's for podman
   sysctl:
     name: net.pf.filter_local
     value: '1'
     state: present
-  tags: ['podman', 'sysctl']
 
 - name: Run podman at boot to restart containers
   lineinfile:
@@ -36,4 +32,3 @@
     line: "{{ item.line }}"
   loop:
     - line: podman_enable="YES"
-  tags: ['podman']

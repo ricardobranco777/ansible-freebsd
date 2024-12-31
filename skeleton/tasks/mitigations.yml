@@ -17,4 +17,3 @@
       value: 0
     - name: machdep.mitigations.rngds.enable
       value: 0
-  tags: ['security', 'sysctl']

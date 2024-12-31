@@ -7,7 +7,6 @@
       - gpu-firmware-kmod
       - wifi-firmware-kmod
     state: present
-  tags: ['pkg', 'firmware']
 
 - name: Configure boot loader for firmware
   lineinfile:
@@ -20,7 +19,6 @@
     - line: coretemp_load="YES"
     - line: cpu_microcode_load="YES"
     - line: cpu_microcode_name="/boot/firmware/intel-ucode.bin"
-  tags: ['firmware']
 
 - name: Configure /etc/rc.conf for firmware
   lineinfile:
@@ -29,4 +27,3 @@
   loop:
     # Also valid: amdgpu radeonkms
     - line: '#kld_list="i915kms"'
-  tags: ['firmware']

@@ -5,7 +5,6 @@
     src: proc
     fstype: procfs
     state: mounted
-  tags: ['mount', 'config']
 
 - name: Configure boot loader
   lineinfile:
@@ -18,7 +17,6 @@
     # Splash on vt(4)
     - line: #boot_mute="YES"
     - line: #splash="/boot/images/freebsd-logo-rev.png"
-  tags: ['config']
 
 - name: Configure services
   lineinfile:
@@ -33,7 +31,6 @@
     - line: smartd_enable="YES"
     - line: sshd_enable="YES"
     - line: syslogd_flags="-ss"
-  tags: ['config']
 
 - name: Set /etc/hosts.allow
   copy:
@@ -42,7 +39,6 @@
     owner: root
     group: wheel
     mode: 0600
-  tags: ['config']
 
 - name: Set /etc/motd.template
   copy:
@@ -51,4 +47,3 @@
     owner: root
     group: wheel
     mode: 0644
-  tags: ['config']

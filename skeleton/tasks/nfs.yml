@@ -13,13 +13,11 @@
     # NFS v4
     - line: nfsv4_server_enable="YES"
     - line: nfsuserd_enable="YES"
-  tags: ['nfs']
 
 - name: Create /etc/exports
   shell: touch /etc/exports
   args:
     creates: /etc/exports
-  tags: ['nfs']
 
 - name: Set /etc/hosts.allow
   copy:
@@ -28,4 +26,3 @@
     owner: root
     group: wheel
     mode: 0600
-  tags: ['nfs']

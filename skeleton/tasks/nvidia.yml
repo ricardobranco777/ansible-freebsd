@@ -5,7 +5,6 @@
       - nvidia-driver
       - nvidia-drm-kmod
     state: present
-  tags: ['pkg', 'nvidia']
 
 - name: Configure boot loader for firmware
   lineinfile:
@@ -13,7 +12,6 @@
     line: "{{ item.line }}"
   loop:
     - line: hw.nvidiadrm.modeset=1
-  tags: ['nvidia']
 
 - name: Configure /etc/rc.conf for nvidai
   lineinfile:
@@ -21,4 +19,3 @@
     line: "{{ item.line }}"
   loop:
     - line: '#kld_list="nvidia-modeset"'
-  tags: ['nvidai']

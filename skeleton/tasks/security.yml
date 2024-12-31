@@ -27,7 +27,6 @@
       value: 1
     - name: security.bsd.hardlink_check_uid
       value: 1
-  tags: ['security', 'sysctl']
 
 # This one should be specified with lineinfile because
 # it returns a random value when reading the sysctl
@@ -36,7 +35,6 @@
     path: /etc/sysctl.conf
     line: kern.randompid=1
     regexp: ^kern\.randompid
-  tags: ['security', 'sysctl']
 
 - name: Security sysctl's in loader.conf
   lineinfile:
@@ -46,7 +44,6 @@
   loop:
     - line: security.bsd.allow_destructive_dtrace=0
       regexp: ^security\.bsd\.allow_destructive_dtrace=
-  tags: ['security', 'sysctl']
 
 - name: Install security packages
   pkgng:
@@ -54,7 +51,6 @@
       - doas
       - sudo
     state: present
-  tags: ['pkg', 'security']
 
 - name: Configure doas
   copy:
@@ -63,7 +59,6 @@
     owner: root
     group: wheel
     mode: 0600
-  tags: ['security']
 
 - name: Configure sudo
   copy:
@@ -72,7 +67,6 @@
     owner: root
     group: wheel
     mode: 0600
-  tags: ['security']
 
 - name: Turn off suid/sgid bits
   file:
@@ -84,4 +78,3 @@
     - path: /usr/bin/lpr
     - path: /usr/bin/lprm
     - path: /usr/sbin/lpc
-  tags: ['security']

@@ -6,7 +6,6 @@
     owner: root
     group: wheel
     mode: 0644
-  tags: ['pkg']
 
 - name: Create /usr/local/etc/pkg/repos/
   file:
@@ -15,7 +14,6 @@
     owner: root
     group: wheel
     mode: '0755'
-  tags: ['pkg']
 
 - name: Add FreeBSD-kmods
   copy:
@@ -25,7 +23,6 @@
     group: wheel
     mode: 0644
   when: not ansible_facts['distribution_release'].endswith("-CURRENT")
-  tags: ['pkg']
 
 
 - name: Install required packages
@@ -70,17 +67,14 @@
       - wget
       - zfstools
     state: present
-  tags: ['pkg']
 
 #- name: Add ports collection
 #  shell: git clone --depth 1 --branch stable/14 https://github.com/freebsd/freebsd-ports /usr/ports
 #  args:
 #    creates: /usr/ports
-#  tags: ['ports']
 
 #- name: Add ports collection
 #  git:
 #    repo: https://git.FreeBSD.org/ports.git
 #    dest: /usr/ports
 #    depth: 1
-#  tags: ['ports']

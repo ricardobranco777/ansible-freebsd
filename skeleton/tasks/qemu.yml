@@ -4,7 +4,6 @@
     name:
       - qemu-guest-agent
     state: present
-  tags: ['pkg', 'qemu']
 
 - name: Autostart QEMU Guest Agent
   lineinfile:
@@ -13,4 +12,3 @@
   loop:
     - line: qemu_guest_agent_enable="YES"
     - line: qemu_guest_agent_flags="-d -v -l /var/log/qemu-ga.log -p /dev/vtcon/com.redhat.spice.0"
-  tags: ['pkg', 'qemu']

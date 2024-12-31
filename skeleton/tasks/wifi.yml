@@ -6,7 +6,6 @@
     owner: root
     group: wheel
     mode: 0600
-  tags: ['wifi']
 
 - name: Configure WiFi
   lineinfile:
@@ -17,4 +16,3 @@
     - line: ifconfig_wlan0="WPA DHCP"
     - line: ifconfig_wlan0_ipv6="inet6 accept_rtadv"
     - line: create_args_wlan0="country DE regdomain ETSI"
-  tags: ['wifi']

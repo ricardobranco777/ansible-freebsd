@@ -11,7 +11,6 @@
       - xorg
       - xwayland
     state: present
-  tags: ['pkg', 'gnome']
 
 # pw groupmod video -m $USER
 - name: Add user to video group
@@ -19,7 +18,6 @@
     name: "{{ target_user }}"
     groups: video
     append: yes
-  tags: ['gnome']
 
 - name: Configure boot loader for Gnome
   lineinfile:
@@ -28,7 +26,6 @@
   loop:
     - line: utouch_load="YES"
   when: ansible_virtualization_type == 'kvm'
-  tags: ['config']
 
 - name: Configure services for Gnome
   lineinfile:
@@ -38,7 +35,6 @@
     - line: dbus_enable="YES"
     - line: gdm_enable="YES"
     - line: var_run_enable="YES"
-  tags: ['gnome']
 
 # For UEFI. For BIOS use VESA
 - name: Configure SCFB
@@ -48,7 +44,6 @@
     owner: root
     group: wheel
     mode: 0644
-  tags: ['gnome']
 
 - name: Configure fonts
   copy:
@@ -57,7 +52,6 @@
     owner: root
     group: wheel
     mode: 0644
-  tags: ['gnome']
 
 - name: Mount /var/run if not mounted
   mount:
@@ -65,4 +59,3 @@
     src: tmpfs
     fstype: tmpfs
     state: mounted
-  tags: ['mount', 'gnome']

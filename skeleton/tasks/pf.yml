@@ -5,7 +5,6 @@
     line: "{{ item.line }}"
   loop:
     - line: pf_load="YES"
-  tags: ['pf']
 
 - name: Load Packet Filter services
   lineinfile:
@@ -15,7 +14,6 @@
     - line: pf_enable="YES"
     - line: pflog_enable="YES"
     - line: pf_rules="/etc/pf.conf"
-  tags: ['pf']
 
 - name: Configure Packet Filter
   copy:
@@ -24,4 +22,3 @@
     owner: root
     group: wheel
     mode: 0600
-  tags: ['pf']
