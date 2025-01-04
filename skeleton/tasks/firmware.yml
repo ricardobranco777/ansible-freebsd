@@ -25,5 +25,6 @@
     path: /etc/rc.conf
     line: "{{ item.line }}"
   loop:
+    - line: 'microcode_update_enable="YES"'
     # Also valid: amdgpu radeonkms
     - line: '#kld_list="i915kms"'
