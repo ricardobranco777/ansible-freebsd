@@ -15,8 +15,8 @@
     - line: kern.geom.label.gptid.enable="0"
     - line: kern.geom.label.disk_ident.enable="0"
     # Splash on vt(4)
-    - line: #boot_mute="YES"
-    - line: #splash="/boot/images/freebsd-logo-rev.png"
+    - line: '#boot_mute="YES"'
+    - line: '#splash="/boot/images/freebsd-logo-rev.png"'
 
 - name: Configure services
   lineinfile:
@@ -26,7 +26,7 @@
     - line: clear_tmp_enable="YES"
     - line: ntpd_enable="YES"
     - line: ntpd_sync_on_start="YES"
-    - line: powerd_enable="YES"
+    - line: '#powerd_enable="YES"'
     - line: rpcbind_flags="-W"
     - line: smartd_enable="YES"
     - line: sshd_enable="YES"
@@ -47,3 +47,12 @@
     owner: root
     group: wheel
     mode: 0644
+
+- name: Set sysctl's
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  loop:
+    - name: kern.proc_vmmap_skip_resident_count
+      value: 1
