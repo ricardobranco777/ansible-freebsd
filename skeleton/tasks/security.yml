@@ -5,15 +5,7 @@
     value: "{{ item.value }}"
     state: present
   loop:
-    - name: security.bsd.see_other_uids
-      value: 0
-    - name: security.bsd.see_other_gids
-      value: 0
-    - name: security.bsd.see_jail_proc
-      value: 0
-    - name: security.bsd.unprivileged_read_msgbuf
-      value: 0
-    - name: security.bsd.unprivileged_proc_debug
+    - name: kern.coredump
       value: 0
     - name: net.inet.ip.process_options
       value: 0
@@ -21,12 +13,22 @@
       value: 1
     - name: net.inet.tcp.drop_synfin
       value: 1
-    - name: kern.coredump
+    - name: security.bsd.allow_ptrace
       value: 0
     - name: security.bsd.hardlink_check_gid
       value: 1
     - name: security.bsd.hardlink_check_uid
       value: 1
+    - name: security.bsd.see_jail_proc
+      value: 0
+    - name: security.bsd.see_other_gids
+      value: 0
+    - name: security.bsd.see_other_uids
+      value: 0
+    - name: security.bsd.unprivileged_read_msgbuf
+      value: 0
+    - name: security.bsd.unprivileged_proc_debug
+      value: 0
 
 # This one should be specified with lineinfile because
 # it returns a random value when reading the sysctl
