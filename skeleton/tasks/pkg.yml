@@ -22,8 +22,7 @@
     owner: root
     group: wheel
     mode: 0644
-  when: not ansible_facts['distribution_release'].endswith("-CURRENT")
-
+  when: not ansible_facts['distribution_release'].endswith("-CURRENT") && ansible_virtualization_type != 'kvm'
 
 - name: Install required packages
   pkgng:
