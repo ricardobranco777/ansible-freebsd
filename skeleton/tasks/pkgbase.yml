@@ -20,6 +20,8 @@
     group: wheel
     mode: 0600
 
+# Full list of packages visible with:
+# pkg install -r FreeBSD-base -g 'FreeBSD-*'
 - name: Install FreeBSD base packages
   pkgng:
     name:
