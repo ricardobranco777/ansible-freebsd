@@ -9,18 +9,18 @@ nooptions	SYSVSHM
 nooptions	SYSVMSG
 nooptions	SYSVSEM
 
-nooptions	COMPAT_FREEBSD4
-nooptions	COMPAT_FREEBSD5
-nooptions	COMPAT_FREEBSD6
-nooptions	COMPAT_FREEBSD7
-nooptions	COMPAT_FREEBSD8
-nooptions	COMPAT_FREEBSD9
-nooptions	COMPAT_FREEBSD10
+#nooptions	COMPAT_FREEBSD4
+#nooptions	COMPAT_FREEBSD5
+#nooptions	COMPAT_FREEBSD6
+#nooptions	COMPAT_FREEBSD7
+#nooptions	COMPAT_FREEBSD8
+#nooptions	COMPAT_FREEBSD9
+#nooptions	COMPAT_FREEBSD10
 # Golang & Rust need this because they use 32-bit inodes
 # https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=261769
 #nooptions	COMPAT_FREEBSD11
-nooptions	COMPAT_FREEBSD12
-nooptions	COMPAT_FREEBSD13
+#nooptions	COMPAT_FREEBSD12
+#nooptions	COMPAT_FREEBSD13
 
 # sys/conf/std.debug is included on -CURRENT
 #nooptions	BUF_TRACKING		# Track buffer history
