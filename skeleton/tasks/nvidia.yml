@@ -13,9 +13,17 @@
   loop:
     - line: hw.nvidiadrm.modeset=1
 
-- name: Configure /etc/rc.conf for nvidai
+- name: Configure /etc/rc.conf for Nvidia
   lineinfile:
     path: /etc/rc.conf
     line: "{{ item.line }}"
   loop:
-    - line: '#kld_list="nvidia-modeset"'
+    - line: 'kld_list="nvidia-modeset"'
+
+- name: Add Nvidia to PORTS_MODULES
+  lineinfile:
+    path: /etc/make.conf
+    regexp: '^PORTS_MODULES.*kmod'
+    line: 'PORTS_MODULES+= graphics/drm-kmod graphics/nvidia-drm-kmod'
+    state: present
+

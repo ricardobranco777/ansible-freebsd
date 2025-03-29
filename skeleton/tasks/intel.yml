@@ -12,9 +12,9 @@
   loop:
     - line: 'kld_list="i915kms"'
 
-- name: Add gpu-firmware-intel-kmod to PORTS_MODULES
+- name: Add Intel to PORTS_MODULES
   lineinfile:
     path: /etc/make.conf
-    regexp: '^PORTS_MODULES.*graphics/gpu-firmware-intel-kmod'
-    line: 'PORTS_MODULES+= graphics/gpu-firmware-intel-kmod'
+    regexp: '^PORTS_MODULES.*kmod'
+    line: 'PORTS_MODULES+= graphics/drm-kmod graphics/gpu-firmware-intel-kmod'
     state: present
