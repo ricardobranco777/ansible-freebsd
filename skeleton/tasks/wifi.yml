@@ -16,3 +16,9 @@
     - line: ifconfig_wlan0="WPA DHCP"
     - line: ifconfig_wlan0_ipv6="inet6 accept_rtadv"
     - line: create_args_wlan0="country DE regdomain ETSI"
+
+- name: Add firmware to PORTS_MODULES
+  lineinfile:
+    path: /etc/make.conf
+    line: 'PORTS_MODULES+= net/wifi-firmware-kmod'
+    state: present
