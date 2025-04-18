@@ -23,7 +23,6 @@
 - name: Add Nvidia to PORTS_MODULES
   lineinfile:
     path: /etc/make.conf
-    regexp: '^PORTS_MODULES.*kmod'
     line: 'PORTS_MODULES+= graphics/drm-kmod graphics/nvidia-drm-kmod'
     state: present
 
