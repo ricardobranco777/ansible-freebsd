@@ -58,7 +58,6 @@
       - psmisc
       - python3
       - rsync
-      - screen
       - smartmontools
       - tmux
       - util-linux
