@@ -27,6 +27,7 @@
 - name: Install required packages
   pkgng:
     name:
+      - atf
       - bash
       - bash-completion
       - cdrtools
@@ -44,6 +45,7 @@
       - gsed
       - gtar
       - jq
+      - kyua
       - lesspipe
       - mc
       - modules2tuple
