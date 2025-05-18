@@ -2,7 +2,7 @@
 - name: Add user to needed groups
   user:
     name: "{{ target_user }}"
-    groups: wheel,operator
+    groups: wheel
     append: yes
     shell: /usr/local/bin/bash
 
