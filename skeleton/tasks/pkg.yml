@@ -41,6 +41,7 @@
       - gmake
       - gnugrep
       - gnupg
+      - gperf
       - groff
       - gsed
       - gtar
