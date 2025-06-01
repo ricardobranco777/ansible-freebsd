@@ -29,8 +29,15 @@
     - line: '#powerd_enable="YES"'
     - line: rpcbind_flags="-W"
     - line: smartd_enable="YES"
-    - line: sshd_enable="YES"
     - line: syslogd_flags="-ss"
+
+- name: Create /usr/local/etc/rc.conf.d
+  file:
+    path: /usr/local/etc/rc.conf.d
+    state: directory
+    owner: root
+    group: wheel
+    mode: '0755'
 
 - name: Set /etc/hosts.allow
   copy:

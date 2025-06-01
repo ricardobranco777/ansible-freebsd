@@ -21,20 +21,28 @@
 
 - name: Configure boot loader for Gnome
   lineinfile:
-    path: /boot/loader.conf
-    line: "{{ item.line }}"
-  loop:
-    - line: utouch_load="YES"
+    path: /boot/loader.conf.d/utouch.conf
+    line: utouch_load="YES"
+    create: true
   when: ansible_virtualization_type == 'kvm'
 
-- name: Configure services for Gnome
+- name: Configure DBus
   lineinfile:
-    path: /etc/rc.conf
-    line: "{{ item.line }}"
-  loop:
-    - line: dbus_enable="YES"
-    - line: gdm_enable="YES"
-    - line: var_run_enable="YES"
+    path: /etc/rc.conf.d/dbus
+    line: dbus_enable="YES"
+    create: true
+
+- name: Configure GDM
+  lineinfile:
+    path: /etc/rc.conf.d/gdm
+    line: gdm_enable="YES"
+    create: true
+
+- name: Enable /var/run
+  lineinfile:
+    path: /etc/rc.conf.d/var_run
+    line: var_run_enable="YES"
+    create: true
 
 # For UEFI. For BIOS use VESA
 - name: Configure SCFB

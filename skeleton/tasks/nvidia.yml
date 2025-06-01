@@ -8,8 +8,9 @@
 
 - name: Configure boot loader for firmware
   lineinfile:
-    path: /boot/loader.conf
+    path: /boot/loader.conf.d/nvidia.conf
     line: "{{ item.line }}"
+    create: true
   loop:
     - line: hw.nvidiadrm.modeset=1
 

@@ -5,7 +5,7 @@
       - libva-intel-driver 
     state: present
 
-- name: Configure /etc/rc.conf for nvidai
+- name: Configure /etc/rc.conf for i915
   lineinfile:
     path: /etc/rc.conf
     line: "{{ item.line }}"

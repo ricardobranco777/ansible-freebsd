@@ -31,7 +31,8 @@
 
 - name: Configure services
   lineinfile:
-    path: /etc/rc.conf
+    path: /etc/rc.conf.d/sshd
     line: "{{ item.line }}"
+    create: true
   loop:
     - line: sshd_enable="YES"

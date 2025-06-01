@@ -44,12 +44,11 @@
 
 - name: Security sysctl's in loader.conf
   lineinfile:
-    path: /boot/loader.conf
+    path: /boot/loader.conf/security.conf
     line: "{{ item.line }}"
-    regexp: "{{ item.regexp }}"
+    create: true
   loop:
     - line: security.bsd.allow_destructive_dtrace=0
-      regexp: ^security\.bsd\.allow_destructive_dtrace=
 
 - name: Install security packages
   pkgng:

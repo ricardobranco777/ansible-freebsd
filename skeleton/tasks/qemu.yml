@@ -7,8 +7,9 @@
 
 - name: Autostart QEMU Guest Agent
   lineinfile:
-    path: /etc/rc.conf
+    path: /usr/local/etc/rc.conf.d/qemu_guest_agent_enable
     line: "{{ item.line }}"
+    create: true
   loop:
     - line: qemu_guest_agent_enable="YES"
     - line: qemu_guest_agent_flags="-d -v -l /var/log/qemu-ga.log -p /dev/vtcon/com.redhat.spice.0"

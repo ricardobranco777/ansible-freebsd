@@ -1,21 +1,26 @@
 ---
 - name: Load Packet Filter at boot
   lineinfile:
-    path: /boot/loader.conf
-    line: "{{ item.line }}"
-  loop:
-    - line: pf_load="YES"
-
-- name: Load Packet Filter services
-  lineinfile:
-    path: /etc/rc.conf
-    line: "{{ item.line }}"
-  loop:
-    - line: pf_enable="YES"
-    - line: pflog_enable="YES"
-    - line: pf_rules="/etc/pf.conf"
+    path: /boot/loader.conf.d/pf.conf
+    line: pf_load="YES"
+    create: true
 
 - name: Configure Packet Filter
+  lineinfile:
+    path: /etc/rc.conf.d/pf
+    line: "{{ item.line }}"
+    create: true
+  loop:
+    - line: pf_enable="YES"
+    - line: pf_rules="/etc/pf.conf"
+
+- name: Configure Packet Filter Log
+  lineinfile:
+    path: /etc/rc.conf.d/pflog
+    line: pflog_enable="YES"
+    create: true
+
+- name: Copy Packet Filter rules
   copy:
     src: pf.conf
     dest: /etc/pf.conf

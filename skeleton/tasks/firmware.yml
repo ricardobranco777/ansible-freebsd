@@ -8,23 +8,37 @@
       - wifi-firmware-kmod
     state: present
 
-- name: Configure boot loader for firmware
+- name: Configure boot loader for microcode
   lineinfile:
-    path: /boot/loader.conf
+    path: /boot/loader.conf.d/cpu_microcode.conf
     line: "{{ item.line }}"
+    create: true
+  loop:
+    - line: cpu_microcode_load="YES"
+    # - line: cpu_microcode_name="/boot/firmware/amd-ucode.bin"
+    - line: cpu_microcode_name="/boot/firmware/intel-ucode.bin"
+
+- name: Configure boot loader for coretemp
+  lineinfile:
+    path: /boot/loader.conf.d/coretemp.conf
+    line: "{{ item.line }}"
+    create: true
   loop:
     # AMD
     #- line: amdtemp_load="YES"
     # Intel
     - line: coretemp_load="YES"
-    - line: cpu_microcode_load="YES"
-    - line: cpu_microcode_name="/boot/firmware/intel-ucode.bin"
 
 - name: Configure /etc/rc.conf for firmware
   lineinfile:
     path: /etc/rc.conf
     line: "{{ item.line }}"
   loop:
-    - line: 'microcode_update_enable="YES"'
     # Also valid: amdgpu radeonkms
     - line: '#kld_list="i915kms"'
+
+- name: Configure /etc/rc.conf for microcode_update
+  lineinfile:
+    path: /usr/local/etc/rc.conf.d/microcode_update
+    line: 'microcode_update_enable="YES"'
+    create: true
