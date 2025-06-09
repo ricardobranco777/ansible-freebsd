@@ -27,6 +27,14 @@
     group: wheel
     mode: 0644
 
+- name: Copy /etc/src-env.conf
+  copy:
+    src: src-env.conf
+    dest: /etc/src-env.conf
+    owner: root
+    group: wheel
+    mode: 0644
+
 #- name: Copy CUSTOM kernel configuration
 #  copy:
 #    src: CUSTOM
