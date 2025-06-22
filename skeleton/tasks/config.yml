@@ -61,6 +61,8 @@
     value: "{{ item.value }}"
     state: present
   loop:
+    - name: hw.usb.no_shutdown_wait
+      value: 1
     - name: kern.msgbuf_show_timestamp
       value: 1
     - name: kern.proc_vmmap_skip_resident_count
