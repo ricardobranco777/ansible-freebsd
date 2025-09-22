@@ -24,9 +24,9 @@
     line: "{{ item.line }}"
   loop:
     - line: clear_tmp_enable="YES"
+    - line: local_unbound_enable="YES"
     - line: ntpd_enable="YES"
     - line: ntpd_sync_on_start="YES"
-    - line: '#powerd_enable="YES"'
     - line: rpcbind_flags="-W"
     - line: smartd_enable="YES"
     - line: syslogd_flags="-ss"
