@@ -31,13 +31,16 @@
     - line: smartd_enable="YES"
     - line: syslogd_flags="-ss"
 
-- name: Create /usr/local/etc/rc.conf.d
+- name: Create rc.conf.d
   file:
-    path: /usr/local/etc/rc.conf.d
+    path: "{{ item.name }}"
     state: directory
     owner: root
     group: wheel
     mode: '0755'
+  loop:
+    - name: /etc/rc.conf.d
+    - name: /usr/local/etc/rc.conf.d
 
 - name: Set /etc/hosts.allow
   copy:
