@@ -38,12 +38,6 @@
     line: gdm_enable="YES"
     create: true
 
-- name: Enable /var/run
-  lineinfile:
-    path: /etc/rc.conf.d/var_run
-    line: var_run_enable="YES"
-    create: true
-
 # For UEFI. For BIOS use VESA
 - name: Configure SCFB
   copy:
