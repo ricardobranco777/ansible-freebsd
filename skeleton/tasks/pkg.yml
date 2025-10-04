@@ -49,7 +49,6 @@
       - modules2tuple
       - moreutils
       - nmap
-      - patchutils
       - pciutils
       - pkgconf
       - pigz
