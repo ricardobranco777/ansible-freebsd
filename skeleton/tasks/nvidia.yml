@@ -4,6 +4,8 @@
     name:
       - nvidia-driver
       - nvidia-drm-kmod
+      - nvidia-settings
+      - nvidia-xconfig
     state: present
 
 - name: Configure boot loader for firmware
@@ -19,7 +21,7 @@
     path: /etc/rc.conf
     line: "{{ item.line }}"
   loop:
-    - line: 'kld_list="nvidia-modeset"'
+    - line: 'kld_list="nvidia-drm"'
 
 - name: Add Nvidia to PORTS_MODULES
   lineinfile:
