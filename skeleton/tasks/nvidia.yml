@@ -2,8 +2,9 @@
 - name: Install Nvidia packages
   pkgng:
     name:
+      - drm-latest-kmod
       - nvidia-driver
-      - nvidia-drm-kmod
+      - nvidia-drm-latest-kmod
       - nvidia-settings
       - nvidia-xconfig
     state: present
@@ -26,6 +27,6 @@
 - name: Add Nvidia to PORTS_MODULES
   lineinfile:
     path: /etc/make.conf
-    line: 'PORTS_MODULES+= graphics/drm-kmod graphics/nvidia-drm-kmod'
+    line: 'PORTS_MODULES+= graphics/drm-latest-kmod graphics/nvidia-drm-kmod'
     state: present
 
