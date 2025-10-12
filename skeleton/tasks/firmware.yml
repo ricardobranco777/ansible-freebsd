@@ -3,8 +3,6 @@
   pkgng:
     name:
       - cpu-microcode
-      - drm-kmod
-      - gpu-firmware-kmod
       - wifi-firmware-kmod
     state: present
 
@@ -28,14 +26,6 @@
     #- line: amdtemp_load="YES"
     # Intel
     - line: coretemp_load="YES"
-
-- name: Configure /etc/rc.conf for firmware
-  lineinfile:
-    path: /etc/rc.conf
-    line: "{{ item.line }}"
-  loop:
-    # Also valid: amdgpu radeonkms
-    - line: '#kld_list="i915kms"'
 
 - name: Configure /etc/rc.conf for microcode_update
   lineinfile:
