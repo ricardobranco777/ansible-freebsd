@@ -2,14 +2,10 @@
 - name: Install required packages
   pkgng:
     name:
-      - drm-kmod
-      - gnome-lite
-      - gnome-terminal
-      - libva-utils
-      - mesa-dri
-      - urwfonts
-      - xorg
-      - xwayland
+      - lightdm
+      - lightdm-gtk-greeter
+      - mate
+      - firefox
     state: present
 
 # pw groupmod video -m $USER
@@ -19,7 +15,7 @@
     groups: video
     append: yes
 
-- name: Configure boot loader for Gnome
+- name: Configure boot loader for MATE
   lineinfile:
     path: /boot/loader.conf.d/utouch.conf
     line: utouch_load="YES"
@@ -32,28 +28,11 @@
     line: dbus_enable="YES"
     create: true
 
-- name: Configure GDM
+- name: Configure LightDM
   lineinfile:
-    path: /etc/rc.conf.d/gdm
-    line: gdm_enable="YES"
+    path: /etc/rc.conf.d/lightdm
+    line: lightdm_enable="YES"
     create: true
-
-# For UEFI. For BIOS use VESA
-- name: Configure SCFB
-  copy:
-    src: 20-scfb.conf
-    dest: /usr/local/etc/X11/xorg.conf.d/20-scfb.conf
-    owner: root
-    group: wheel
-    mode: 0644
-
-- name: Configure fonts
-  copy:
-    src: 90-fonts.conf
-    dest: /usr/local/etc/X11/xorg.conf.d/90-fonts.conf
-    owner: root
-    group: wheel
-    mode: 0644
 
 - name: Mount /var/run if not mounted
   mount:
