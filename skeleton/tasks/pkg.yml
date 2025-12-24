@@ -7,22 +7,17 @@
     group: wheel
     mode: 0644
 
-- name: Create /usr/local/etc/pkg/repos/
-  file:
-    path: /usr/local/etc/pkg/repos
-    state: directory
-    owner: root
-    group: wheel
-    mode: '0755'
-
-- name: Add FreeBSD-kmods
-  copy:
-    src: pkg/FreeBSD-kmods.conf
-    dest: /usr/local/etc/pkg/repos/FreeBSD-kmods.conf
-    owner: root
-    group: wheel
-    mode: 0644
-  when: not ansible_facts['distribution_release'].endswith("-CURRENT") && ansible_virtualization_type != 'kvm'
+# https://wiki.freebsd.org/PkgBase
+- name: Backup libraries
+  lineinfile:
+    path: /usr/local/etc/pkg.conf
+    line: "{{ item.line }}"
+    regexp: "{{ item.regexp }}"
+  loop:
+    - line: BACKUP_LIBRARIES=true
+      regexp: ^BACKUP_LIBRARIES=
+    - line: BACKUP_LIBRARY_PATH=/usr/local/lib/compat/pkg
+      regexp: ^BACKUP_LIBRARY_PATH=
 
 - name: Install required packages
   pkgng:

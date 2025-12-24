@@ -1,6 +1,6 @@
 # ansible-freebsd
 
-Ansible configuration for FreeBSD 14 that installs:
+Ansible configuration for FreeBSD 15 that installs:
 
 - Linux Binary compability layer
 - Podman on ZFS
