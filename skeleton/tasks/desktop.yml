@@ -7,6 +7,7 @@
       - lightdm-gtk-greeter
       - mate
       - seatd
+      - xlibre
     state: present
 
 # pw groupmod video -m $USER
