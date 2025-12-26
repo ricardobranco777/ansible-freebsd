@@ -33,7 +33,7 @@
       - gawk
       - gdb
       - gh
-      - git
+      - git-lite
       - gmake
       - gnugrep
       - groff
