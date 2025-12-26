@@ -2,17 +2,17 @@
 - name: Configure NFS
   lineinfile:
     path: /etc/rc.conf
-    line: "{{ item.line }}"
+    line: "{{ item }}"
   loop:
-    - line: nfs_server_enable="YES"
-    - line: mountd_enable="YES"
+    - nfs_server_enable="YES"
+    - mountd_enable="YES"
     # NFS v2/v3
-    - line: rpcbind_enable="YES"
-    - line: rpc_lockd_enable="YES"
-    - line: rpc_statd_enable="YES"
+    - rpcbind_enable="YES"
+    - rpc_lockd_enable="YES"
+    - rpc_statd_enable="YES"
     # NFS v4
-    - line: nfsv4_server_enable="YES"
-    - line: nfsuserd_enable="YES"
+    - nfsv4_server_enable="YES"
+    - nfsuserd_enable="YES"
 
 - name: Create /etc/exports
   shell: touch /etc/exports

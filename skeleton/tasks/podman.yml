@@ -29,7 +29,7 @@
 - name: Run podman at boot to restart containers
   lineinfile:
     path: /etc/rc.conf.d/podman
-    line: "{{ item.line }}"
+    line: "{{ item }}"
     create: true
   loop:
-    - line: podman_enable="YES"
+    - podman_enable="YES"

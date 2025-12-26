@@ -10,12 +10,12 @@
 - name: Configure WiFi
   lineinfile:
     path: /etc/rc.conf
-    line: "{{ item.line }}"
+    line: "{{ item }}"
   loop:
-    - line: wlans_iwm0="wlan0"
-    - line: ifconfig_wlan0="WPA DHCP"
-    - line: ifconfig_wlan0_ipv6="inet6 accept_rtadv"
-    - line: create_args_wlan0="country DE regdomain ETSI"
+    - wlans_iwm0="wlan0"
+    - ifconfig_wlan0="WPA DHCP"
+    - ifconfig_wlan0_ipv6="inet6 accept_rtadv"
+    - create_args_wlan0="country DE regdomain ETSI"
 
 - name: Add firmware to PORTS_MODULES
   lineinfile:

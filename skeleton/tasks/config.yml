@@ -9,38 +9,23 @@
 - name: Configure boot loader
   lineinfile:
     path: /boot/loader.conf
-    line: "{{ item.line }}"
+    line: "{{ item }}"
   loop:
-    - line: geom_label_load="YES"
-    - line: kern.geom.label.gptid.enable="0"
-    - line: kern.geom.label.disk_ident.enable="0"
-    # Splash on vt(4)
-    - line: '#boot_mute="YES"'
-    - line: '#splash="/boot/images/freebsd-logo-rev.png"'
+    - autoboot_delay="5"
+    - geom_label_load="YES"
 
 - name: Configure services
   lineinfile:
     path: /etc/rc.conf
-    line: "{{ item.line }}"
+    line: "{{ item }}"
   loop:
-    - line: clear_tmp_enable="YES"
-    - line: local_unbound_enable="YES"
-    - line: ntpd_enable="YES"
-    - line: ntpd_sync_on_start="YES"
-    - line: rpcbind_flags="-W"
-    - line: smartd_enable="YES"
-    - line: syslogd_flags="-ss"
-
-- name: Create rc.conf.d
-  file:
-    path: "{{ item.name }}"
-    state: directory
-    owner: root
-    group: wheel
-    mode: '0755'
-  loop:
-    - name: /etc/rc.conf.d
-    - name: /usr/local/etc/rc.conf.d
+    - clear_tmp_enable="YES"
+    - local_unbound_enable="YES"
+    - ntpd_enable="YES"
+    - ntpd_sync_on_start="YES"
+    - rpcbind_flags="-W"
+    - smartd_enable="YES"
+    - syslogd_flags="-ss"
 
 - name: Set /etc/hosts.allow
   copy:

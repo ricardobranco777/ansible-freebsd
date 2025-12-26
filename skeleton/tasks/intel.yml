@@ -9,9 +9,9 @@
 - name: Configure /etc/rc.conf for i915
   lineinfile:
     path: /etc/rc.conf
-    line: "{{ item.line }}"
+    line: "{{ item }}"
   loop:
-    - line: 'kld_list="i915kms"'
+    - kld_list="i915kms"
 
 - name: Add Intel to PORTS_MODULES
   lineinfile:

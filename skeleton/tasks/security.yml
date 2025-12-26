@@ -45,10 +45,10 @@
 - name: Security sysctl's in loader.conf
   lineinfile:
     path: /boot/loader.conf/security.conf
-    line: "{{ item.line }}"
+    line: "{{ item }}"
     create: true
   loop:
-    - line: security.bsd.allow_destructive_dtrace=0
+    - security.bsd.allow_destructive_dtrace=0
 
 - name: Install security packages
   pkgng:
@@ -75,11 +75,11 @@
 
 - name: Turn off suid/sgid bits
   file:
-    path: "{{ item.path }}"
+    path: "{{ item }}"
     mode: "u-s,g-s"
   ignore_errors: yes
   loop:
-    - path: /usr/bin/lpq
-    - path: /usr/bin/lpr
-    - path: /usr/bin/lprm
-    - path: /usr/sbin/lpc
+    - /usr/bin/lpq
+    - /usr/bin/lpr
+    - /usr/bin/lprm
+    - /usr/sbin/lpc

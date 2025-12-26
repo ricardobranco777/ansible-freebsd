@@ -12,21 +12,20 @@
 - name: Configure boot loader for firmware
   lineinfile:
     path: /boot/loader.conf.d/nvidia.conf
-    line: "{{ item.line }}"
+    line: "{{ item }}"
     create: true
   loop:
-    - line: hw.nvidiadrm.modeset=1
+    - hw.nvidiadrm.modeset=1
 
 - name: Configure /etc/rc.conf for Nvidia
   lineinfile:
     path: /etc/rc.conf
-    line: "{{ item.line }}"
+    line: "{{ item }}"
   loop:
-    - line: 'kld_list="nvidia-drm"'
+    - kld_list="nvidia-drm"
 
 - name: Add Nvidia to PORTS_MODULES
   lineinfile:
     path: /etc/make.conf
     line: 'PORTS_MODULES+= graphics/drm-latest-kmod graphics/nvidia-drm-kmod'
     state: present
-

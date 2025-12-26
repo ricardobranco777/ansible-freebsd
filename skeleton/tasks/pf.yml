@@ -8,17 +8,12 @@
 - name: Configure Packet Filter
   lineinfile:
     path: /etc/rc.conf.d/pf
-    line: "{{ item.line }}"
+    line: "{{ item }}"
     create: true
   loop:
-    - line: pf_enable="YES"
-    - line: pf_rules="/etc/pf.conf"
-
-- name: Configure Packet Filter Log
-  lineinfile:
-    path: /etc/rc.conf.d/pflog
-    line: pflog_enable="YES"
-    create: true
+    - pf_enable="YES"
+    - pf_rules="/etc/pf.conf"
+    - pflog_enable="YES"
 
 - name: Copy Packet Filter rules
   copy:
