@@ -2,10 +2,11 @@
 - name: Install required packages
   pkgng:
     name:
+      - firefox
       - lightdm
       - lightdm-gtk-greeter
       - mate
-      - firefox
+      - seatd
     state: present
 
 # pw groupmod video -m $USER
@@ -15,24 +16,22 @@
     groups: video
     append: yes
 
-- name: Configure boot loader for MATE
+- name: Configure virtual tablet
   lineinfile:
     path: /boot/loader.conf.d/utouch.conf
     line: utouch_load="YES"
     create: true
   when: ansible_virtualization_type == 'kvm'
 
-- name: Configure DBus
+- name: Configure desktop services
   lineinfile:
-    path: /etc/rc.conf.d/dbus
-    line: dbus_enable="YES"
+    path: /etc/rc.conf.d/desktop
+    line: '{{ item }}_enable="YES"'
     create: true
-
-- name: Configure LightDM
-  lineinfile:
-    path: /etc/rc.conf.d/lightdm
-    line: lightdm_enable="YES"
-    create: true
+  loop:
+    - dbus
+    - lightdm
+    - seatd
 
 - name: Mount /var/run if not mounted
   mount:
