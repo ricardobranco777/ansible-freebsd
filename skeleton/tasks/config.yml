@@ -12,6 +12,7 @@
     line: "{{ item }}"
   loop:
     - autoboot_delay="5"
+    - kern.msgbuf_show_timestamp=2
     - geom_label_load="YES"
 
 - name: Configure services
@@ -50,8 +51,6 @@
     state: present
   loop:
     - name: hw.usb.no_shutdown_wait
-      value: 1
-    - name: kern.msgbuf_show_timestamp
       value: 1
     - name: kern.proc_vmmap_skip_resident_count
       value: 1
