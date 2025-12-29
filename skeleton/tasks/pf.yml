@@ -13,6 +13,13 @@
   loop:
     - pf_enable="YES"
     - pf_rules="/etc/pf.conf"
+
+- name: Configure pflog
+  lineinfile:
+    path: /etc/rc.conf.d/pflog
+    line: "{{ item }}"
+    create: true
+  loop:
     - pflog_enable="YES"
 
 - name: Copy Packet Filter rules
