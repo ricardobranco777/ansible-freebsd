@@ -16,9 +16,12 @@
     - #nfsuserd_enable="YES"
 
 - name: Create /etc/exports
-  shell: touch /etc/exports
-  args:
-    creates: /etc/exports
+  copy:
+    src: exports
+    dest: /etc/exports
+    owner: root
+    group: wheel
+    mode: 0600
 
 - name: Set /etc/hosts.allow
   copy:
