@@ -22,7 +22,6 @@
   loop:
     - clear_tmp_enable="YES"
     - local_unbound_enable="YES"
-    - ntpd_enable="YES"
     - ntpd_sync_on_start="YES"
     - rpcbind_flags="-W"
     - smartd_enable="YES"
