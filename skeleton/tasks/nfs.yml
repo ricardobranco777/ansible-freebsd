@@ -5,14 +5,15 @@
     line: "{{ item }}"
   loop:
     - nfs_server_enable="YES"
-    - mountd_enable="YES"
     # NFS v2/v3
-    - rpcbind_enable="YES"
-    - rpc_lockd_enable="YES"
-    - rpc_statd_enable="YES"
+    #- mountd_enable="YES"
+    #- rpcbind_enable="YES"
+    #- rpc_lockd_enable="YES"
+    #- rpc_statd_enable="YES"
     # NFS v4
+    - nfsv4_server_only="YES"
     - nfsv4_server_enable="YES"
-    - nfsuserd_enable="YES"
+    - #nfsuserd_enable="YES"
 
 - name: Create /etc/exports
   shell: touch /etc/exports
