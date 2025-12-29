@@ -1,0 +1,36 @@
+---
+- name: Install samba packages
+  pkgng:
+    name:
+      - avahi-app
+      - nss_mdns
+      - samba423
+    state: present
+
+- name: Configure Samba
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item }}"
+  loop:
+    - avahi_daemon_enable="YES"
+    - dbus_enable="YES"
+    - samba_server_enable="YES"
+    - winbindd_enable="YES"
+
+- name: Create smb.conf
+  copy:
+    src: smb4.conf
+    dest: /usr/local/etc/smb4.conf
+    owner: root
+    group: wheel
+    mode: 0600
+
+- name: Remove Avahi service files
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /usr/local/etc/avahi/services/sftp-ssh.service
+    - /usr/local/etc/avahi/services/ssh.service
+
+# TODO: gsed -i 's/^hosts: .*/& mdns/' /etc/nsswitch.conf
