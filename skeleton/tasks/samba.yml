@@ -33,4 +33,12 @@
     - /usr/local/etc/avahi/services/sftp-ssh.service
     - /usr/local/etc/avahi/services/ssh.service
 
-# TODO: gsed -i 's/^hosts: .*/& mdns/' /etc/nsswitch.conf
+# gsed -i 's/^hosts: .*/& mdns/' /etc/nsswitch.conf
+- name: Update smb.conf
+  copy:
+    src: nsswitch.conf
+    dest: /etc/nsswitch.conf
+    owner: root
+    group: wheel
+    mode: 0644
+
