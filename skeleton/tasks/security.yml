@@ -83,3 +83,11 @@
     - /usr/bin/lpr
     - /usr/bin/lprm
     - /usr/sbin/lpc
+
+- name: Set securelevel
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item }}"
+  loop:
+    - kern_securelevel_enable="YES"
+    - kern_securelevel=1
