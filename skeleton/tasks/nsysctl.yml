@@ -1,0 +1,15 @@
+---
+- name: Install nsysctl
+  pkgng:
+    name:
+      - nsysctl
+    state: present
+
+- name: Load nysctl at boot
+  lineinfile:
+    path: /boot/loader.conf.d/nsysctl.conf
+    line: "{{ item }}"
+    create: true
+  loop:
+    - sysctlbyname_improved_load="YES"
+    - sysctlinfo_load="YES"
