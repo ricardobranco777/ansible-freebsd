@@ -20,3 +20,10 @@ make check-old
 sudo make -DBATCH_DELETE_OLD_FILES delete-old delete-old-libs
 sudo reboot
 ```
+
+In case of problems:
+
+```
+zfs list -t snapshot
+sudo zfs rollback -r zroot/ROOT/default@...`
+```

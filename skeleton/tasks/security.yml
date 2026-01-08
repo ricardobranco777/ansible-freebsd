@@ -90,4 +90,5 @@
     line: "{{ item }}"
   loop:
     - kern_securelevel_enable="YES"
-    - kern_securelevel=1
+    # https://github.com/freebsd/pkg/issues/2586
+    - kern_securelevel=-1
