@@ -24,9 +24,3 @@
   loop:
     #- amdtemp_load="YES"
     - coretemp_load="YES"
-
-- name: Configure /etc/rc.conf for microcode_update
-  lineinfile:
-    path: /usr/local/etc/rc.conf.d/microcode_update
-    line: 'microcode_update_enable="YES"'
-    create: true
