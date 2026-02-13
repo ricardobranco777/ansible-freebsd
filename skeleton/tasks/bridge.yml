@@ -1,0 +1,41 @@
+---
+- name: Load bridge at boot
+  lineinfile:
+    path: /boot/loader.conf.d/bridge.conf
+    line: "{{ item }}"
+  loop:
+    - if_bridge_load="YES"
+    - bridgestp_load="YES"
+    - net.isr.bindthreads=1
+    - net.isr.maxthreads=-1
+    - hw.pci.enable_aspm=0
+
+- name: Configure bridge interfaces
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item }}"
+  loop:
+    - cloned_interfaces="bridge0"
+    - ifconfig_bridge0="addm igc0 addm igc1 stp igc0 stp igc1 SYNCDHCP up"
+    - ifconfig_bridge0_ipv6="inet6 accept_rtadv auto_linklocal"
+    - ifconfig_igc0="up"
+    - ifconfig_igc1="up"
+
+- name: Bridge sysctl's
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  loop:
+    # Log STP port changes to syslog
+    - name: net.link.bridge.log_stp
+      value: 1
+    # Packet filter on the bridge interface
+    - name: net.link.bridge.pfil_bridge
+      value: 1
+    # Set to 0 if you don't want to firewall each interface
+    - name: net.link.bridge.pfil_member
+      value: 1
+    # Pass packages other than IP
+    - name: net.link.bridge.pfil_onlyip
+      value: 0
