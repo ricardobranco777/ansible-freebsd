@@ -2,17 +2,17 @@
 - name: Install go packages
   pkgng:
     name:
-      - go125
+      - go126
     state: present
 
 - name: Create go symlink
   file:
-    src: go125
+    src: go126
     dest: /usr/local/bin/go
     state: link
 
 - name: Create gofmt symlink
   file:
-    src: gofmt125
+    src: gofmt126
     dest: /usr/local/bin/gofmt
     state: link
