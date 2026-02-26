@@ -39,3 +39,11 @@
     # Pass packages other than IP
     - name: net.link.bridge.pfil_onlyip
       value: 0
+
+- name: Copy Packet Filter rules for bridge
+  copy:
+    src: pf.conf.bridge
+    dest: /etc/pf.conf
+    owner: root
+    group: wheel
+    mode: 0600

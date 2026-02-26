@@ -1,0 +1,45 @@
+# See pf.conf(5) and /usr/share/examples/pf for syntax and examples.
+
+ext_if="igc0"
+int_if="igc1"
+bridge_if="bridge0"
+
+tcp_services = "{ ssh nfsd microsoft-ds }"
+# Port 9 (discard) is needed for WoL
+udp_services = "{ discard nfsd mdns }"
+icmp_types = "{ echoreq }"
+
+# A "drop" (default) is a blackhole
+set block-policy return
+set skip on lo0
+
+scrub in all
+
+# Needed for podman
+# Taken from /usr/local/etc/containers/pf.conf.sample
+nat on $bridge_if inet from <cni-nat> to any -> ($bridge_if)
+nat on $bridge_if inet6 from <cni-nat> to !ff00::/8 -> ($bridge_if)
+rdr-anchor "cni-rdr/*"
+nat-anchor "cni-rdr/*"
+table <cni-nat>
+
+# Bridge firewall rules - allow bridged traffic to pass through
+pass quick on { $ext_if $int_if }
+# block in # log
+pass in
+pass in on cni-podman0
+pass out
+
+#antispoof log quick for { $bridge_if }
+
+# Regular services
+pass in on $bridge_if proto tcp from any to ($bridge_if) port $tcp_services
+pass in on $bridge_if proto udp from any to ($bridge_if) port $udp_services
+
+# mDNS/Avahi - must allow multicast
+pass in on $bridge_if proto udp from any to 224.0.0.251 port mdns
+pass in on $bridge_if proto udp from any to ff02::fb port mdns
+
+# ICMP
+pass in on $bridge_if inet proto icmp from any to any icmp-type $icmp_types
+pass quick inet6 proto ipv6-icmp all keep state
