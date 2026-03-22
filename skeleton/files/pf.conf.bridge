@@ -42,4 +42,4 @@ pass in on $bridge_if proto udp from any to ff02::fb port mdns
 
 # ICMP
 pass in on $bridge_if inet proto icmp from any to any icmp-type $icmp_types
-pass quick inet6 proto ipv6-icmp all keep state
+pass quick inet6 proto ipv6-icmp all
