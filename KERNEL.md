@@ -27,3 +27,11 @@ In case of problems:
 zfs list -t snapshot
 sudo zfs rollback -r zroot/ROOT/default@...`
 ```
+
+If you have pkgbase:
+
+```
+make buildkernel
+sudo pkg unregister FreeBSD-kernel-generic
+sudo make installkernel DESTDIR=/
+```
