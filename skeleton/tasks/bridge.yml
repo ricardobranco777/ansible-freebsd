@@ -36,7 +36,7 @@
     # Set to 0 if you don't want to firewall each interface
     - name: net.link.bridge.pfil_member
       value: 1
-    # Pass packages other than IP
+    # Pass packets other than IP
     - name: net.link.bridge.pfil_onlyip
       value: 0
 
