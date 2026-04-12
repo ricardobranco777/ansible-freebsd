@@ -24,6 +24,8 @@
     - local_unbound_enable="YES"
     - ntpd_sync_on_start="YES"
     - rpcbind_flags="-W"
+    # Enable SLAAC
+    - rtsold_enable="YES"
     - smartd_enable="YES"
     - syslogd_flags="-ss"
 
