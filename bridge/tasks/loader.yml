@@ -1,0 +1,11 @@
+---
+- name: Load bridge at boot
+  lineinfile:
+    path: /boot/loader.conf.d/bridge.conf
+    line: "{{ item }}"
+  loop:
+    - if_bridge_load="YES"
+    - bridgestp_load="YES"
+    - net.isr.bindthreads=1
+    - net.isr.maxthreads=-1
+    - hw.pci.enable_aspm=0

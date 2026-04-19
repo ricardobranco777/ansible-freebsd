@@ -1,0 +1,11 @@
+---
+- name: Configure services
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item }}"
+  loop:
+    - cloned_interfaces="bridge0"
+    - ifconfig_bridge0="addm igc0 addm igc1 stp igc0 stp igc1 SYNCDHCP up"
+    - ifconfig_bridge0_ipv6="inet6 accept_rtadv auto_linklocal"
+    - ifconfig_igc0="up"
+    - ifconfig_igc1="up"
