@@ -21,11 +21,12 @@ sudo make -DBATCH_DELETE_OLD_FILES delete-old delete-old-libs
 sudo reboot
 ```
 
-In case of problems:
+In case of problems, boot into single user mode:
 
 ```
+mount -u /
 zfs list -t snapshot
-sudo zfs rollback -r zroot/ROOT/default@...`
+zfs rollback -r zroot/ROOT/default@...`
 ```
 
 If you have pkgbase:
