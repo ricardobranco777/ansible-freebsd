@@ -35,7 +35,7 @@
     - name: security.bsd.unprivileged_proc_debug
       value: 0
     # CVE-2026-45257 - https://bumsrake.de
-    - name: kern.ipc.mb_use_ext_pg
+    - name: kern.ipc.mb_use_ext_pgs
       value: 0
 
 # This one should be specified with lineinfile because
