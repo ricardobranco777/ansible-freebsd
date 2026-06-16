@@ -8,6 +8,9 @@
     # Set sw,late in swap for getting coredumps
     #- name: kern.coredump
     #  value: 0
+    # CVE-2026-45257 - https://bumsrake.de
+    - name: kern.ipc.mb_use_ext_pgs
+      value: 0
     - name: net.inet6.ip6.connect_in6addr_wild
       value: 0
     - name: net.inet.ip.connect_inaddr_wild
@@ -19,6 +22,8 @@
     - name: net.inet.tcp.drop_synfin
       value: 1
     - name: security.bsd.allow_ptrace
+      value: 0
+    - name: security.bsd.allow_tiocsti
       value: 0
     - name: security.bsd.hardlink_check_gid
       value: 1
@@ -33,9 +38,6 @@
     - name: security.bsd.unprivileged_read_msgbuf
       value: 0
     - name: security.bsd.unprivileged_proc_debug
-      value: 0
-    # CVE-2026-45257 - https://bumsrake.de
-    - name: kern.ipc.mb_use_ext_pgs
       value: 0
 
 # This one should be specified with lineinfile because
