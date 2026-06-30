@@ -11,6 +11,9 @@
     # CVE-2026-45257 - https://bumsrake.de
     - name: kern.ipc.mb_use_ext_pgs
       value: 0
+    # CVE-2026-49423
+    - name: kern.ipc.tls.enable
+      value: 0
     - name: net.inet6.ip6.connect_in6addr_wild
       value: 0
     - name: net.inet.ip.connect_inaddr_wild
