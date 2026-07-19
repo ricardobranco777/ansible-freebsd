@@ -1,0 +1,19 @@
+---
+- name: Install Intel packages
+  pkgng:
+    name:
+      - drm-latest-kmod
+    state: present
+
+- name: Configure /etc/rc.conf for AMD
+  lineinfile:
+    path: /etc/rc.conf
+    line: "{{ item }}"
+  loop:
+    - kld_list="amdgpu"
+
+- name: Add AMD to PORTS_MODULES
+  lineinfile:
+    path: /etc/make.conf
+    line: 'PORTS_MODULES+= graphics/drm-latest-kmod graphics/gpu-firmware-amd-kmod'
+    state: present
