@@ -72,7 +72,7 @@
     state: present
 
 - name: Create /etc/resolv.conf
-  shell: install /etc/resolv.conf /compat/linux/etc/resolv.conf
+  shell: mkdir /compat/linux/etc/ ; cp /etc/resolv.conf /compat/linux/etc/resolv.conf
   args:
     creates: /compat/linux/etc/resolv.conf
 
