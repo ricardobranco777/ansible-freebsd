@@ -39,7 +39,6 @@
       - gsed
       - gtar
       - jq
-      - kyua
       - lesspipe
       - modules2tuple
       - moreutils
