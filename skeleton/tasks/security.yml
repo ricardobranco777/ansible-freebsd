@@ -14,8 +14,10 @@
     # CVE-2026-49423
     - name: kern.ipc.tls.enable
       value: 0
+    # Disappeared in 16.0
     - name: net.inet6.ip6.connect_in6addr_wild
       value: 0
+    # Disappeared in 16.0
     - name: net.inet.ip.connect_inaddr_wild
       value: 0
     - name: net.inet.ip.process_options
