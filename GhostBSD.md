@@ -13,3 +13,9 @@ Disable in /etc/rc.conf:
 
 - cups
 - webcamd
+
+Fix X:
+
+```
+echo 'xconfig_enable="YES"' >> /etc/rc.conf
+```
