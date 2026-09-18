@@ -25,6 +25,8 @@
       - atf
       - bash
       - bash-completion
+      - bluez
+      - bluez-deprecated
       - coreutils
       - curl
       - diffutils
