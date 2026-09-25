@@ -4,7 +4,7 @@
     name:
       - avahi-app
       - nss_mdns
-      - samba423
+      - samba424
     state: present
 
 - name: Configure Samba
